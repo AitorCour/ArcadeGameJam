@@ -7,6 +7,7 @@ public class PlayerBehaviour : MonoBehaviour
     private Vector2 axis;
     private Vector2 currentVelocity;
     private Rigidbody2D rb;
+    private SpriteRenderer spritePlayer;
     private Animator anim;
     private Weapon weapon;
     public float speed;
@@ -30,6 +31,7 @@ public class PlayerBehaviour : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponentInChildren<Animator>();
         weapon = GetComponentInChildren<Weapon>();
+        spritePlayer = GetComponentInChildren<SpriteRenderer>();
     }
     void FixedUpdate()
     {
@@ -58,9 +60,11 @@ public class PlayerBehaviour : MonoBehaviour
 
         if(!canRecieveDamage)
         {
+            spritePlayer.color = new Color(spritePlayer.color.r, spritePlayer.color.g, spritePlayer.color.b, 0.5f);
             if (timeCounterDamage >= damageTime)
             {
                 canRecieveDamage = true;
+                spritePlayer.color = new Color(spritePlayer.color.r, spritePlayer.color.g, spritePlayer.color.b, 1f);
                 timeCounterDamage = 0;
             }
             else timeCounterDamage += Time.deltaTime;

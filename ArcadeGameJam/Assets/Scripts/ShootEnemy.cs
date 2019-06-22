@@ -37,7 +37,7 @@ public class ShootEnemy : MonoBehaviour
         RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, distance, player);
         if (hit.collider != null)
         {
-            Debug.Log(hit.collider.gameObject.name);
+            //Debug.Log(hit.collider.gameObject.name);
             playerDetected = true;
         }
         else playerDetected = false;
