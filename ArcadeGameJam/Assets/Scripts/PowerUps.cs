@@ -9,6 +9,8 @@ public class PowerUps : MonoBehaviour
     public bool jump;
     public bool tripleCannon;
     public bool bounce;
+    public bool life;
+
     private bool isInsideTrigger = false;
     private PlayerBehaviour player;
     private PowerManager pManager;
@@ -17,7 +19,7 @@ public class PowerUps : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehaviour>();
         pManager = GetComponentInParent<PowerManager>();
-        int value = Random.Range(0, 4);
+        int value = Random.Range(0, 5);
         Debug.Log(value);
         if(value == 0)
         {
@@ -34,6 +36,10 @@ public class PowerUps : MonoBehaviour
         else if (value == 3)
         {
             bounce = true;
+        }
+        else if (value == 4)
+        {
+            life = true;
         }
     }
 
@@ -54,12 +60,17 @@ public class PowerUps : MonoBehaviour
                 }
                 else if (tripleCannon)
                 {
+                    player.cannonsNumber *= 2;
                     player.CannonType();
                 }
                 else if (bounce)
                 {
                     player.bulletBounces *= 2;
                     player.BounceBullet();
+                }
+                else if (life)
+                {
+                    player.life += 1;
                 }
                 pManager.DesactiveAll();
             }

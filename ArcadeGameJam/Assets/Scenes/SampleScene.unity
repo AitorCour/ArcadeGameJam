@@ -161,6 +161,7 @@ MonoBehaviour:
   jump: 0
   tripleCannon: 0
   bounce: 0
+  life: 0
 --- !u!61 &79978226
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -279,8 +280,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba6e6d2565457814ea0656b6790dfa1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tripleCannon: 1
   bounces: 0
+  cannons: 1
 --- !u!1 &205758973
 GameObject:
   m_ObjectHideFlags: 0
@@ -315,6 +316,7 @@ MonoBehaviour:
   jump: 0
   tripleCannon: 0
   bounce: 0
+  life: 0
 --- !u!61 &205758975
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1315,6 +1317,7 @@ MonoBehaviour:
   jump: 0
   tripleCannon: 0
   bounce: 0
+  life: 0
 --- !u!61 &903889695
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1432,6 +1435,7 @@ MonoBehaviour:
   tripleCannon: 1
   bounce: 1
   bulletBounces: 1
+  cannonsNumber: 1
   feetPos: {fileID: 1516682608}
   checkRadius: 0.3
   jumpTime: 0.2

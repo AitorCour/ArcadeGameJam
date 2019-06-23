@@ -17,12 +17,14 @@ public class PlayerBehaviour : MonoBehaviour
     private bool isGrounded;
     private bool isJumping;
 
+    //Save
     public float speed;
     public int life;
     public float jumpForce;
     public bool tripleCannon;
     public bool bounce;
     public int bulletBounces;
+    public int cannonsNumber;
 
     public Transform feetPos;
     public float checkRadius;
@@ -161,7 +163,7 @@ public class PlayerBehaviour : MonoBehaviour
     public void CannonType()
     {
         tripleCannon = true;
-        cannon.tripleCannon = true;
+        cannon.cannons = cannonsNumber;
     }
     public void BounceBullet()
     {
