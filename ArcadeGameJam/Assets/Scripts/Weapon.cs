@@ -12,6 +12,7 @@ public class Weapon : MonoBehaviour
     public int maxAmmo;
     public int currentCartridge = 0;
     public bool posCart;
+    public bool bounce;
     // Start is called before the first frame update
     void Start()
     {
@@ -44,11 +45,25 @@ public class Weapon : MonoBehaviour
     {
         if(posCart)
         {
-            currentCartridge = 0;
+            if(!bounce)
+            {
+                currentCartridge = 0;
+            }
+            else if(bounce)
+            {
+                currentCartridge = 2;
+            }
         }
         else if(!posCart)
         {
-            currentCartridge = 1;
+            if (!bounce)
+            {
+                currentCartridge = 1;
+            }
+            else if (bounce)
+            {
+                currentCartridge = 3;
+            }
         }
     }
 }

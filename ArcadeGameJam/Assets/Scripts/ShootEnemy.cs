@@ -11,6 +11,7 @@ public class ShootEnemy : MonoBehaviour
     public LayerMask player;
     private Ecanon canon;
     private PlayerBehaviour playerBe;
+    private EnemyHead head;
     public Transform[] waypoints;
     public int waypointIndex = 0;
     public float speed;
@@ -23,6 +24,7 @@ public class ShootEnemy : MonoBehaviour
         shootCounter = 0;
         canon = GetComponentInChildren<Ecanon>();
         playerBe = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehaviour>();
+        head = GetComponentInChildren<EnemyHead>();
     }
     private void OnDrawGizmosSelected()
     {
@@ -121,5 +123,7 @@ public class ShootEnemy : MonoBehaviour
     void Death()
     {
         this.enabled = false;
+        head.enabled = false;
+        transform.position = new Vector2(-20, -20);
     }
 }

@@ -10,9 +10,15 @@ public class PlayerBehaviour : MonoBehaviour
     private SpriteRenderer spritePlayer;
     private Animator anim;
     private Weapon weapon;
+    private Cannon cannon;
+    private GameObject[] bulletObj;
+    private Bullet[] bullet;
+
     public float speed;
     private bool isGrounded;
     private bool isJumping;
+    public bool tripleCannon;
+    public bool bounce;
     public Transform feetPos;
     public float checkRadius;
     private float jumpCounter;
@@ -31,6 +37,8 @@ public class PlayerBehaviour : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponentInChildren<Animator>();
         weapon = GetComponentInChildren<Weapon>();
+        cannon = GetComponentInChildren<Cannon>();
+        bulletObj = GameObject.FindGameObjectsWithTag("Bullet");
         spritePlayer = GetComponentInChildren<SpriteRenderer>();
     }
     void FixedUpdate()
@@ -146,5 +154,15 @@ public class PlayerBehaviour : MonoBehaviour
     void Death()
     {
         Debug.Log("Dead");
+    }
+    public void CannonType()
+    {
+        tripleCannon = true;
+        cannon.tripleCannon = true;
+    }
+    public void BounceBullet()
+    {
+        bounce = true;
+        weapon.bounce = true;
     }
 }

@@ -8,6 +8,7 @@ TagManager:
   - EnemyShoot
   - Feet
   - PowerUp
+  - Bullet
   layers:
   - Default
   - TransparentFX

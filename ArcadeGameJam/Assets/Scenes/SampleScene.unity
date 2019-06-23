@@ -159,6 +159,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0
   jump: 0
+  tripleCannon: 0
+  bounce: 0
 --- !u!61 &79978226
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -277,6 +279,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba6e6d2565457814ea0656b6790dfa1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tripleCannon: 1
 --- !u!1 &205758973
 GameObject:
   m_ObjectHideFlags: 0
@@ -309,6 +312,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0
   jump: 0
+  tripleCannon: 0
+  bounce: 0
 --- !u!61 &205758975
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -427,10 +432,13 @@ MonoBehaviour:
   bulletsResources:
   - {fileID: 5319634450308845962, guid: 44b087a1699a2744395a409272d0324d, type: 3}
   - {fileID: 5319634450308845962, guid: abc81c28bc7c7fb4f84549a203be0a3d, type: 3}
+  - {fileID: 5319634450308845962, guid: 44418ae0ad13050499dadd3ab27d4737, type: 3}
+  - {fileID: 5319634450308845962, guid: 3da2592c813a41441907cbc68a881e75, type: 3}
   ammoTransform: {fileID: 0}
   maxAmmo: 40
   currentCartridge: 0
   posCart: 0
+  bounce: 0
 --- !u!1 &332902758
 GameObject:
   m_ObjectHideFlags: 0
@@ -1304,6 +1312,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0
   jump: 0
+  tripleCannon: 0
+  bounce: 0
 --- !u!61 &903889695
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1416,6 +1426,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
+  tripleCannon: 1
+  bounce: 1
   feetPos: {fileID: 1516682608}
   checkRadius: 0.3
   jumpTime: 0.2

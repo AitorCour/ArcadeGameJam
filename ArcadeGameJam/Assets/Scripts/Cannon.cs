@@ -4,8 +4,18 @@ using UnityEngine;
 
 public class Cannon : MonoBehaviour
 {
+    public bool tripleCannon = false;
     public void ShotCannon(Cartridge c)
     {
-        c.GetBullet().ShotBullet(transform.position, Vector2.right);
+        if(!tripleCannon)
+        {
+            c.GetBullet().ShotBullet(transform.position, Vector2.right);
+        }
+        else if(tripleCannon)
+        {
+            c.GetBullet().ShotBullet(transform.position, 0);
+            c.GetBullet().ShotBullet(transform.position, -10);
+            c.GetBullet().ShotBullet(transform.position, 10);
+        }
     }
 }
