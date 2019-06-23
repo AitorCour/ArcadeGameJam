@@ -14,20 +14,23 @@ public class PlayerBehaviour : MonoBehaviour
     private GameObject[] bulletObj;
     private Bullet[] bullet;
 
-    public float speed;
     private bool isGrounded;
     private bool isJumping;
+
+    public float speed;
+    public int life;
+    public float jumpForce;
     public bool tripleCannon;
     public bool bounce;
+    public int bulletBounces;
+
     public Transform feetPos;
     public float checkRadius;
     private float jumpCounter;
     public float jumpTime;
-    public float jumpForce;
     public LayerMask ground;
     private bool movingForward = true;
 
-    public int life;
     private bool canRecieveDamage = true;
     private float timeCounterDamage;
     public float damageTime;
@@ -164,5 +167,6 @@ public class PlayerBehaviour : MonoBehaviour
     {
         bounce = true;
         weapon.bounce = true;
+        cannon.bounces = bulletBounces;
     }
 }

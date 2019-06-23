@@ -58,6 +58,7 @@ public class PowerUps : MonoBehaviour
                 }
                 else if (bounce)
                 {
+                    player.bulletBounces *= 2;
                     player.BounceBullet();
                 }
                 pManager.DesactiveAll();

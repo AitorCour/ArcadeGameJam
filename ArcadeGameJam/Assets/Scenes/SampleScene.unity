@@ -280,6 +280,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tripleCannon: 1
+  bounces: 0
 --- !u!1 &205758973
 GameObject:
   m_ObjectHideFlags: 0
@@ -1426,16 +1427,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
+  life: 7
+  jumpForce: 12
   tripleCannon: 1
   bounce: 1
+  bulletBounces: 1
   feetPos: {fileID: 1516682608}
   checkRadius: 0.3
   jumpTime: 0.2
-  jumpForce: 12
   ground:
     serializedVersion: 2
     m_Bits: 256
-  life: 7
   damageTime: 2
 --- !u!1 &975621832
 GameObject:
@@ -2151,7 +2153,7 @@ GameObject:
   - component: {fileID: 1290331941}
   m_Layer: 0
   m_Name: Head
-  m_TagString: Untagged
+  m_TagString: EnemyShoot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

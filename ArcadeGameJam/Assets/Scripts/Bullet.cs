@@ -11,9 +11,9 @@ public class Bullet : MonoBehaviour
     protected bool shot;
     protected Vector2 iniPos;
     protected Vector2 dir;
-
+    private float rot;
     public AudioSource shotFX;
-    private int collided = 3;
+    public int collided = 2;
     public bool bounceBullets;
 	// Use this for initialization
 	protected virtual void Start ()
@@ -30,7 +30,7 @@ public class Bullet : MonoBehaviour
         }        
 	}
 
-    public virtual void ShotBullet(Vector2 origin, Vector2 direction)
+    public virtual void ShotBullet(Vector2 origin, Vector2 direction, int bounceNumber)
     {
         shot = true;
         transform.position = origin;
@@ -42,12 +42,14 @@ public class Bullet : MonoBehaviour
             shotFX.pitch = Random.Range(0.9f, 1.1f);
             shotFX.Play();
         }
+        collided = bounceNumber;
     }
 
-    public virtual void ShotBullet(Vector2 origin, float zRot)
+    public virtual void ShotBullet(Vector2 origin, float zRot, int bounceNumber)
     {
-        ShotBullet(origin, Vector2.right);
+        ShotBullet(origin, Vector2.right, bounceNumber);
         transform.rotation = Quaternion.Euler(0, 0, zRot);
+        rot = zRot;
     }
 
     public virtual void Reset()
@@ -81,8 +83,10 @@ public class Bullet : MonoBehaviour
         }
         else if (bounceBullets && collision.tag != "Player" && collided > 0 && collision.tag != "Bullet" && collision.tag != "Boundary")
         {
-            speed *= -1;
+            //speed *= -1;
             collided -= 1;
+            dir *= -1;
+            transform.rotation = Quaternion.Euler(0, 0, rot*-2);
         }
         else if (collision.tag != "Boundary" && collision.tag != "Bullet" && collided <= 0)
         {
