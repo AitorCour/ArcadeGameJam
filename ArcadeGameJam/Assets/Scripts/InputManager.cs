@@ -34,8 +34,11 @@ public class InputManager : MonoBehaviour
         }
         if (Input.GetButtonDown("Fire1"))
         {
-            weapon.ShotWeapon();
-            Debug.Log("Click to shoot");
+            if(!player.dead)
+            {
+                weapon.ShotWeapon();
+                player.Shoot();
+            }
         }
         if(Input.GetKeyDown(KeyCode.Escape))
         {

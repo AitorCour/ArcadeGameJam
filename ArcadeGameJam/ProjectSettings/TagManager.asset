@@ -9,6 +9,8 @@ TagManager:
   - Feet
   - PowerUp
   - Bullet
+  - Arm
+  - EnemyMelee
   layers:
   - Default
   - TransparentFX

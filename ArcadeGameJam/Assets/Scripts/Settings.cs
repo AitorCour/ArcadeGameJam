@@ -10,38 +10,40 @@ public class Settings : MonoBehaviour
     public Sprite OnSpriteLoad;
     public Sprite OffSpriteExit;
     public Sprite OnSpriteExit;
-    public Button but;
+    public Button butS;
+    public Button butL;
+    public Button butE;
     public void ChangeImageStart()
     {
-        if (but.image.sprite == OnSpriteStart)
+        if (butS.image.sprite == OnSpriteStart)
         {
-            but.image.sprite = OffSpriteStart;
+            butS.image.sprite = OffSpriteStart;
         }
         else
         {
-            but.image.sprite = OnSpriteStart;
+            butS.image.sprite = OnSpriteStart;
         }
     }
     public void ChangeImageLoad()
     {
-        if (but.image.sprite == OnSpriteLoad)
+        if (butL.image.sprite == OnSpriteLoad)
         {
-            but.image.sprite = OffSpriteLoad;
+            butL.image.sprite = OffSpriteLoad;
         }
         else
         {
-            but.image.sprite = OnSpriteLoad;
+            butL.image.sprite = OnSpriteLoad;
         }
     }
     public void ChangeImageExit()
     {
-        if (but.image.sprite == OnSpriteExit)
+        if (butE.image.sprite == OnSpriteExit)
         {
-            but.image.sprite = OffSpriteExit;
+            butE.image.sprite = OffSpriteExit;
         }
         else
         {
-            but.image.sprite = OnSpriteExit;
+            butE.image.sprite = OnSpriteExit;
         }
     }
 }

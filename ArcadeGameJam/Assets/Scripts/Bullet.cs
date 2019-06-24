@@ -65,7 +65,7 @@ public class Bullet : MonoBehaviour
         if(collision.tag == "Boundary")
         {
             Reset();
-            Debug.Log("bound");
+            //Debug.Log("bound");
         }
     }
 
@@ -73,9 +73,19 @@ public class Bullet : MonoBehaviour
     {
         if (collision.tag == "EnemyShoot")
         {
-            Debug.Log("UFO COLLISION");
+            //Debug.Log("UFO COLLISION");
 
             collision.GetComponent<ShootEnemy>().Damage(damage);
+
+            //collision.gameObject.SendMessage("Damage", damage);
+
+            Reset();
+        }
+        if (collision.tag == "EnemyMelee")
+        {
+            //Debug.Log("UFO COLLISION");
+
+            collision.GetComponent<MeleeEnemy>().Damage(damage);
 
             //collision.gameObject.SendMessage("Damage", damage);
 
@@ -91,14 +101,14 @@ public class Bullet : MonoBehaviour
         else if (collision.tag != "Boundary" && collision.tag != "Bullet" && collided <= 0)
         {
             Reset();
-            Debug.Log("Reseeeeeeeet");
+            //Debug.Log("Reseeeeeeeet");
             collided = 4;
             
         }
         else if(!bounceBullets && collision.tag != "Player" && collision.tag != "Bullet" && collision.tag != "Boundary")
         {
             Reset();
-            Debug.Log("Reseeeeeeeet Cause Nothing");
+            //Debug.Log("Reseeeeeeeet Cause Nothing");
         }
         //Debug.Log("collision");
     }

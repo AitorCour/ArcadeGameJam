@@ -125,7 +125,7 @@ GameObject:
   - component: {fileID: 88518492}
   - component: {fileID: 88518491}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Start
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -335,7 +335,7 @@ GameObject:
   - component: {fileID: 344847698}
   - component: {fileID: 344847697}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: Load
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -578,13 +578,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47b47caa544233b42aa27c0c8c50e95c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OffSpriteStart: {fileID: 0}
-  OnSpriteStart: {fileID: 0}
-  OffSpriteLoad: {fileID: 0}
-  OnSpriteLoad: {fileID: 0}
-  OffSpriteExit: {fileID: 0}
-  OnSpriteExit: {fileID: 0}
-  but: {fileID: 88518491}
+  OffSpriteStart: {fileID: 21300000, guid: c8f11cef60890684da0b6716b20b90eb, type: 3}
+  OnSpriteStart: {fileID: 21300000, guid: a4498e1d19a9dbc40818d231d6482bc5, type: 3}
+  OffSpriteLoad: {fileID: 21300000, guid: a42130395c14cef4b8cd5be087082d11, type: 3}
+  OnSpriteLoad: {fileID: 21300000, guid: dfab11dcbc8930b45bc11eb7bc3bd069, type: 3}
+  OffSpriteExit: {fileID: 21300000, guid: aa94bad8c62df59409643e1e850d1a51, type: 3}
+  OnSpriteExit: {fileID: 21300000, guid: ebd96018d1574a24eaaeff942d2ff5c8, type: 3}
+  butS: {fileID: 88518491}
+  butL: {fileID: 344847697}
+  butE: {fileID: 1594066561}
 --- !u!4 &813933338
 Transform:
   m_ObjectHideFlags: 0
@@ -679,7 +681,7 @@ GameObject:
   - component: {fileID: 1594066562}
   - component: {fileID: 1594066561}
   m_Layer: 5
-  m_Name: Button (2)
+  m_Name: Exit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

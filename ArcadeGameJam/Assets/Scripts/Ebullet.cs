@@ -61,6 +61,7 @@ public class Ebullet : MonoBehaviour
         if(collision.tag == "Boundary")
         {
             Reset();
+            Debug.Log("Boundary");
         }
     }
 
@@ -68,7 +69,7 @@ public class Ebullet : MonoBehaviour
     {
         if(collision.tag == "Player")
         {
-            Debug.Log("UFO COLLISION");
+            //Debug.Log("UFO COLLISION");
 
             collision.GetComponent<PlayerBehaviour>().Damage(damage);
 
