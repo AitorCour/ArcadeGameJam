@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class MeleeEnemy : MonoBehaviour
 {
-    public float shootCounter;
-    public float shootTime;
+    //public float shootCounter;
+    //public float shootTime;
     public float distance;
     public float hitDistance;
     public float distanceBetween;
@@ -15,7 +15,6 @@ public class MeleeEnemy : MonoBehaviour
     public bool tired;
     public bool attacking;
     public bool playerDetected;
-    public LayerMask player;
     private Ecanon canon;
     private PlayerBehaviour playerBe;
     private EnemyHead head;
@@ -28,27 +27,49 @@ public class MeleeEnemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        shootCounter = 0;
+        //shootCounter = 0;
         canon = GetComponentInChildren<Ecanon>();
         playerBe = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehaviour>();
         head = GetComponentInChildren<EnemyHead>();
     }
     private void OnDrawGizmosSelected()
     {
-        Gizmos.color = Color.red;
+        //Gizmos.color = Color.red;
         Vector2 direction = transform.TransformDirection(Vector2.left) * distance;
-        Gizmos.DrawRay(transform.position, direction);
+        //RaycastHit2D direction = Physics2D.Raycast(transform.position, transform.right, distance);
+        if(!playerDetected)
+        {
+            Debug.DrawLine(transform.position, direction, Color.red);
+        }
+        else if (playerDetected)
+        {
+            Debug.DrawLine(transform.position, direction, Color.green);
+        }
+        Gizmos.DrawWireSphere(transform.position, 5f);
+        Gizmos.DrawRay(transform.position, transform.TransformDirection(new Vector2(-1, 1)) * 4);
+        Gizmos.DrawRay(transform.position, transform.TransformDirection(new Vector2(-1, -1)) * 4);
+        if(playerBe != null)
+        {
+            Debug.DrawLine(transform.position, playerBe.transform.position, Color.blue);
+        }
+        
     }
     // Update is called once per frame
     void Update()
     {
         Vector2 direction = transform.TransformDirection(Vector2.left);
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, distance, player);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, distance);
         if (hit.collider != null)
         {
             //Debug.Log(hit.collider.gameObject.name);
-            playerDetected = true;
+            if(hit.collider.CompareTag("Player"))
+            {
+                playerDetected = true;
+                Debug.Log("PlayerDetected");
+            }
         }
+
+
         else playerDetected = false;
 
         if (playerDetected)
@@ -60,7 +81,8 @@ public class MeleeEnemy : MonoBehaviour
                 shootCounter = 0;
             }*/
             //else shootCounter += Time.deltaTime;
-            transform.position = Vector2.MoveTowards(transform.position, playerBe.transform.position, speed * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, new Vector2(playerBe.transform.position.x,
+                /*se quita el transform .y del player aquí*/transform.position.y), speed * Time.deltaTime);
 
             distanceBetween = Vector2.Distance(playerBe.transform.position, transform.position);
 
@@ -122,6 +144,16 @@ public class MeleeEnemy : MonoBehaviour
                 ChangeRotation();
             }
 
+            if(transform.position.x < waypoints[0].transform.position.x)
+            {
+                Quaternion target = Quaternion.Euler(0, 180, 0);
+                transform.rotation = Quaternion.Slerp(transform.rotation, target, 1f);
+            }
+            if (transform.position.x > waypoints[1].transform.position.x)
+            {
+                Quaternion target = Quaternion.Euler(0, 0, 0);
+                transform.rotation = Quaternion.Slerp(transform.rotation, target, 1f);
+            }
         }
         //Repeat
         else if (waypointIndex >= waypoints.Length)

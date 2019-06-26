@@ -370,7 +370,7 @@ GameObject:
   m_Layer: 0
   m_Name: Way
   m_TagString: Untagged
-  m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -749,7 +749,7 @@ GameObject:
   - component: {fileID: 449381624}
   - component: {fileID: 449381627}
   - component: {fileID: 449381622}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: EnemyMelee
   m_TagString: EnemyMelee
   m_Icon: {fileID: 0}
@@ -768,8 +768,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2dddcf37e031857418c6dafcec850857, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootCounter: 0
-  shootTime: 0
   distance: 6.36
   hitDistance: 3
   distanceBetween: 0
@@ -778,9 +776,6 @@ MonoBehaviour:
   tired: 0
   attacking: 0
   playerDetected: 0
-  player:
-    serializedVersion: 2
-    m_Bits: 512
   waypoints:
   - {fileID: 1973136881}
   - {fileID: 1010831953}
@@ -1246,7 +1241,7 @@ GameObject:
   m_Component:
   - component: {fileID: 524339904}
   - component: {fileID: 524339905}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: EnemyCannon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1438,8 +1433,9 @@ GameObject:
   m_Component:
   - component: {fileID: 804875953}
   - component: {fileID: 804875955}
+  - component: {fileID: 804875956}
   - component: {fileID: 804875954}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1499,6 +1495,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.7156446, y: 0.24371654}
   m_EdgeRadius: 0
+--- !u!50 &804875956
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 804875952}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 7
 --- !u!1 &852585809
 GameObject:
   m_ObjectHideFlags: 0
@@ -2371,7 +2388,7 @@ GameObject:
   m_Layer: 0
   m_Name: Way (3)
   m_TagString: Untagged
-  m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -2859,13 +2876,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1511747816}
-  m_LocalRotation: {x: -0, y: -0, z: -0.37779957, w: 0.92588747}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0.02338527, w: 0.99972653}
+  m_LocalPosition: {x: 8.14, y: -1.72, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -44.395}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 2.68}
 --- !u!1 &1516682607
 GameObject:
   m_ObjectHideFlags: 0
@@ -2935,7 +2952,7 @@ GameObject:
   m_Layer: 0
   m_Name: Way (1)
   m_TagString: Untagged
-  m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -3215,7 +3232,7 @@ GameObject:
   m_Layer: 0
   m_Name: Way (2)
   m_TagString: Untagged
-  m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
