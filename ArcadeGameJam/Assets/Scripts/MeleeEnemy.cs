@@ -11,12 +11,15 @@ public class MeleeEnemy : MonoBehaviour
     public float distanceBetween;
     public float runTime;
     public float runCounter;
-
+    public float angle;
+    public float radius;
     public bool tired;
     public bool attacking;
     public bool playerDetected;
+    private bool isInFOV;
     private Ecanon canon;
     private PlayerBehaviour playerBe;
+    public Transform player;
     private EnemyHead head;
     public Transform[] waypoints;
     public int waypointIndex = 0;
@@ -30,6 +33,7 @@ public class MeleeEnemy : MonoBehaviour
         //shootCounter = 0;
         canon = GetComponentInChildren<Ecanon>();
         playerBe = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehaviour>();
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         head = GetComponentInChildren<EnemyHead>();
     }
     private void OnDrawGizmosSelected()
@@ -37,26 +41,64 @@ public class MeleeEnemy : MonoBehaviour
         //Gizmos.color = Color.red;
         Vector2 direction = transform.TransformDirection(Vector2.left) * distance;
         //RaycastHit2D direction = Physics2D.Raycast(transform.position, transform.right, distance);
-        if(!playerDetected)
+        if(!isInFOV)
         {
             Debug.DrawLine(transform.position, direction, Color.red);
         }
-        else if (playerDetected)
+        else if (isInFOV)
         {
             Debug.DrawLine(transform.position, direction, Color.green);
         }
-        Gizmos.DrawWireSphere(transform.position, 5f);
-        Gizmos.DrawRay(transform.position, transform.TransformDirection(new Vector2(-1, 1)) * 4);
-        Gizmos.DrawRay(transform.position, transform.TransformDirection(new Vector2(-1, -1)) * 4);
+        Gizmos.DrawWireSphere(transform.position, radius);
+        Vector3 fovLine1 = Quaternion.AngleAxis(angle, transform.forward) * -transform.right * radius;
+        Vector3 fovLine2 = Quaternion.AngleAxis(-angle, transform.forward) * -transform.right * radius;
+        Gizmos.DrawRay(transform.position, fovLine1);
+        Gizmos.DrawRay(transform.position, fovLine2);
         if(playerBe != null)
         {
-            Debug.DrawLine(transform.position, playerBe.transform.position, Color.blue);
+            Gizmos.color = Color.blue;
+            Gizmos.DrawRay(transform.position, (playerBe.transform.position - transform.position).normalized * radius);
         }
         
+    }
+    public static bool inFOV(Transform checkingObject, Transform target, float maxAngle, float maxRadius)
+    {
+        Collider[] overlaps = new Collider[100];
+        int count = Physics.OverlapSphereNonAlloc(checkingObject.position, maxRadius, overlaps);
+
+        for (int i = 0; i < count + 1; i++)
+        {
+            if (overlaps[i] != null)
+            {
+                if (overlaps[i].transform == target)
+                {
+                    Vector3 directionBetween = (target.position - checkingObject.position).normalized;
+                    directionBetween.y *= 0;
+
+                    float angle = Vector3.Angle(-checkingObject.right, directionBetween);
+
+                    if (angle <= maxAngle)
+                    {
+                        Ray ray = new Ray(checkingObject.position, target.position - checkingObject.position);
+                        RaycastHit hit;
+
+                        if (Physics.Raycast(ray, out hit, maxRadius))
+                        {
+                            if (hit.transform == target)
+                            {
+                                return true;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return false;
     }
     // Update is called once per frame
     void Update()
     {
+        isInFOV = inFOV(transform, player, angle, radius);
         Vector2 direction = transform.TransformDirection(Vector2.left);
         RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, distance);
         if (hit.collider != null)
