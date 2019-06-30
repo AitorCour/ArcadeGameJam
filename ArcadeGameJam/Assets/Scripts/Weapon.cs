@@ -39,7 +39,7 @@ public class Weapon : MonoBehaviour
     public void ShotWeapon()
     {
         cannons.ShotCannon(cartridges[currentCartridge]);
-        Debug.Log("Shoot Weapon");
+        //Debug.Log("Shoot Weapon");
     }
     public void ChangeCartridge()
     {

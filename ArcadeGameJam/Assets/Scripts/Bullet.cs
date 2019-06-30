@@ -30,13 +30,13 @@ public class Bullet : MonoBehaviour
         }        
 	}
 
-    public virtual void ShotBullet(Vector2 origin, Vector2 direction, int bounceNumber)
+    public virtual void ShotBullet(Vector2 origin, Vector2 direction, int bounceNumber, int scale)
     {
         shot = true;
         transform.position = origin;
         dir = direction;
-
-        if(shotFX != null)
+        transform.localScale = new Vector2(scale, scale);
+        if (shotFX != null)
         {
             shotFX.volume = Random.Range(0.75f, 0.9f);
             shotFX.pitch = Random.Range(0.9f, 1.1f);
@@ -45,11 +45,12 @@ public class Bullet : MonoBehaviour
         collided = bounceNumber;
     }
 
-    public virtual void ShotBullet(Vector2 origin, float zRot, int bounceNumber)
+    public virtual void ShotBullet(Vector2 origin, float zRot, int bounceNumber, int scale)
     {
-        ShotBullet(origin, Vector2.right, bounceNumber);
+        ShotBullet(origin, Vector2.right, bounceNumber, scale);
         transform.rotation = Quaternion.Euler(0, 0, zRot);
         rot = zRot;
+        transform.localScale = new Vector2(scale, scale);
     }
 
     public virtual void Reset()

@@ -10,22 +10,25 @@ public class MeleeEnemy : MonoBehaviour
     public float hitDistance;
     public float distanceBetween;
     public float runTime;
-    public float runCounter;
+    private float runCounter;
+    public float detectionTime;
+    private float detectionCounter;
+    public float noDamageTime;
+    private float noDamageCounter;
     public float angle;
     public float radius;
-    public bool tired;
-    public bool attacking;
+    private bool tired;
+    private bool attacking;
     public bool playerDetected;
-    private bool isInFOV;
+    public bool canDoDamage;
     private Ecanon canon;
     private PlayerBehaviour playerBe;
-    public Transform player;
+    public LayerMask player;
     private EnemyHead head;
     public Transform[] waypoints;
     public int waypointIndex = 0;
     public float speed;
-    private bool movingForward = true;
-
+    public bool testing;
     public int enemyLife;
     // Start is called before the first frame update
     void Start()
@@ -33,15 +36,12 @@ public class MeleeEnemy : MonoBehaviour
         //shootCounter = 0;
         canon = GetComponentInChildren<Ecanon>();
         playerBe = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehaviour>();
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         head = GetComponentInChildren<EnemyHead>();
     }
     private void OnDrawGizmosSelected()
     {
-        //Gizmos.color = Color.red;
         Vector2 direction = transform.TransformDirection(Vector2.left) * distance;
-        //RaycastHit2D direction = Physics2D.Raycast(transform.position, transform.right, distance);
-        if(!isInFOV)
+        /*if(!isInFOV)
         {
             Debug.DrawLine(transform.position, direction, Color.red);
         }
@@ -58,10 +58,16 @@ public class MeleeEnemy : MonoBehaviour
         {
             Gizmos.color = Color.blue;
             Gizmos.DrawRay(transform.position, (playerBe.transform.position - transform.position).normalized * radius);
-        }
-        
+        }*/
+        //Vector3 fovLine1 = Quaternion.AngleAxis(angle, transform.forward) * -transform.right * radius;
+        Vector3 fovLine2 = Quaternion.AngleAxis(-angle, transform.forward) * -transform.right * radius;
+        Vector3 fovLine1 = Quaternion.AngleAxis(-angle / 2, transform.forward) * -transform.right * radius;
+        //Gizmos.DrawRay(transform.position, fovLine1);
+        Gizmos.DrawRay(transform.position, fovLine2);
+        Gizmos.DrawRay(transform.position, fovLine1);
+        Gizmos.DrawRay(transform.position, direction);
     }
-    public static bool inFOV(Transform checkingObject, Transform target, float maxAngle, float maxRadius)
+    /*public static bool inFOV(Transform checkingObject, Transform target, float maxAngle, float maxRadius)
     {
         Collider[] overlaps = new Collider[100];
         int count = Physics.OverlapSphereNonAlloc(checkingObject.position, maxRadius, overlaps);
@@ -94,27 +100,56 @@ public class MeleeEnemy : MonoBehaviour
             }
         }
         return false;
-    }
+    }*/
     // Update is called once per frame
     void Update()
     {
-        isInFOV = inFOV(transform, player, angle, radius);
         Vector2 direction = transform.TransformDirection(Vector2.left);
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, distance);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, distance, player);
+        Vector3 fovLine2 = Quaternion.AngleAxis(-angle, transform.forward) * -transform.right;
+        RaycastHit2D hit2 = Physics2D.Raycast(transform.position, fovLine2, radius, player);
+        Vector3 fovLine1 = Quaternion.AngleAxis(-angle/2, transform.forward) * -transform.right;
+        RaycastHit2D hit1 = Physics2D.Raycast(transform.position, fovLine1, radius, player);
+
         if (hit.collider != null)
         {
             //Debug.Log(hit.collider.gameObject.name);
-            if(hit.collider.CompareTag("Player"))
+            if (hit.collider.CompareTag("Player"))
             {
                 playerDetected = true;
-                Debug.Log("PlayerDetected");
+                //Debug.Log("PlayerDetected");
+            }
+        }
+        else if (hit2.collider != null)
+        {
+            //Debug.Log(hit.collider.gameObject.name);
+            if (hit2.collider.CompareTag("Player"))
+            {
+                playerDetected = true;
+                //Debug.Log("PlayerDetected");
+            }
+        }
+        else if (hit1.collider != null)
+        {
+            //Debug.Log(hit.collider.gameObject.name);
+            if (hit1.collider.CompareTag("Player"))
+            {
+                playerDetected = true;
+                //Debug.Log("PlayerDetected");
             }
         }
 
+        else
+        {
+            if (detectionCounter >= detectionTime)
+            {
+                playerDetected = false;
+                detectionCounter = 0;
+            }
+            else detectionCounter += Time.deltaTime;
+        }
 
-        else playerDetected = false;
-
-        if (playerDetected)
+        if (playerDetected && !testing)
         {
             /*if (shootCounter >= shootTime)
             {
@@ -163,6 +198,16 @@ public class MeleeEnemy : MonoBehaviour
             runCounter = 0;
             //tired = false;
             Move();
+        }
+        if(!canDoDamage)
+        {
+            if (noDamageCounter >= noDamageTime)
+            {
+                canDoDamage = true;
+                noDamageCounter = 0;
+
+            }
+            else noDamageCounter += Time.deltaTime;
         }
     }
     private void Move()
@@ -225,10 +270,10 @@ public class MeleeEnemy : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Player")
+        if (collision.tag == "Player" && canDoDamage)
         {
             playerBe.Damage(1);
-            Debug.Log("ENEMYCOLLISION");
+            //Debug.Log("ENEMYCOLLISION");
         }
     }
     public void Damage(int damage)

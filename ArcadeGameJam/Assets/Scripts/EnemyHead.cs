@@ -31,6 +31,7 @@ public class EnemyHead : MonoBehaviour
             }
             else
             {
+                enemyMelee.canDoDamage = false;
                 enemyMelee.Damage(2);
             }
             plBehaviour.EnemyJump();
