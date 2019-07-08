@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 public class Settings : MonoBehaviour
 {
     public Sprite OffSpriteStart;
@@ -13,6 +14,10 @@ public class Settings : MonoBehaviour
     public Button butS;
     public Button butL;
     public Button butE;
+
+    public Image black;
+    public Animator animator;
+
     public void ChangeImageStart()
     {
         if (butS.image.sprite == OnSpriteStart)
@@ -45,5 +50,20 @@ public class Settings : MonoBehaviour
         {
             butE.image.sprite = OnSpriteExit;
         }
+    }
+    public void ChangeScene(int scene)
+    {
+        StartCoroutine(FadeButton(scene));
+        Debug.Log("change_1");
+    }
+    IEnumerator FadeButton(int scene)
+    {
+        Debug.Log("change");
+
+        animator.SetBool("Fade", true);
+        yield return new WaitUntil(() => black.color.a == 1);
+        //settings.SaveVolume();
+
+        SceneManager.LoadScene(scene);
     }
 }

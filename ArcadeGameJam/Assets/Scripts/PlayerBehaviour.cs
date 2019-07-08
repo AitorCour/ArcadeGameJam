@@ -110,16 +110,22 @@ public class PlayerBehaviour : MonoBehaviour
         if (axis.x == 1)
         {
             anim.SetBool("Walking", true);
+            animArm.SetBool("WalkingHead", true);
             movingForward = false;
             ChangeRotation();
         }
         else if (axis.x == -1)
         {
             anim.SetBool("Walking", true);
+            animArm.SetBool("WalkingHead", true);
             movingForward = true;
             ChangeRotation();
         }
-        else anim.SetBool("Walking", false);
+        else
+        {
+            anim.SetBool("Walking", false);
+            animArm.SetBool("WalkingHead", false);
+        }
     }
     public void StartJump()
     {
