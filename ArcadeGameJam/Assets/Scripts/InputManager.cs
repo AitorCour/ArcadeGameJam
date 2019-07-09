@@ -40,7 +40,14 @@ public class InputManager : MonoBehaviour
                 player.Shoot();
             }
         }
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetButtonDown("Fire2"))
+        {
+            if (!player.dead)
+            {
+                Debug.Log("Eating");
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             if(paused)
             {

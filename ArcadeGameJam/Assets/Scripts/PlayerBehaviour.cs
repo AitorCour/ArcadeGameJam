@@ -40,6 +40,8 @@ public class PlayerBehaviour : MonoBehaviour
     private bool canRecieveDamage = true;
     private float timeCounterDamage;
     public float damageTime;
+
+    private float distanceBetween;
     // Start is called before the first frame update
     void Start()
     {
@@ -71,7 +73,18 @@ public class PlayerBehaviour : MonoBehaviour
             {
                 isJumping = false;
                 jumpCounter = jumpTime;
+                animArm.SetTrigger("MidJump");
             }
+        }
+        if(isGrounded)
+        {
+            anim.SetBool("Jumping", false);
+            animArm.SetBool("Jumping", false);
+        }
+        else if(!isGrounded)
+        {
+            anim.SetBool("Jumping", true);
+            animArm.SetBool("Jumping", true);
         }
     }
     void Update()
@@ -96,6 +109,8 @@ public class PlayerBehaviour : MonoBehaviour
             }
             else timeCounterDamage += Time.deltaTime;
         }
+
+        distanceBetween = Vector2.Distance(transform.position, );
     }
     // Update is called once per frame
     public void SetAxis(Vector2 inputAxis)
@@ -134,18 +149,20 @@ public class PlayerBehaviour : MonoBehaviour
         else if (!canMove) return;
         isJumping = true;
         jumpCounter = jumpTime;
-        anim.SetTrigger("Jump");
+        
     }
     public void EnemyJump()
     {
         if (!canMove) return;
         isJumping = true;
         jumpCounter = jumpTime/2;
-        anim.SetTrigger("Jump");
+        //anim.SetTrigger("Jump");
+        anim.SetBool("Jumping", true);
     }
     public void StopJump()
     {
         isJumping = false;
+       // anim.SetBool("Jumping", false);
     }
     void ChangeRotation()
     {
@@ -189,6 +206,7 @@ public class PlayerBehaviour : MonoBehaviour
             canMove = false;
             arm.SetActive(false);
             anim.SetTrigger("Dead");
+            animArm.SetTrigger("Dead");
             dead = true;
         }
         else return;
@@ -207,5 +225,9 @@ public class PlayerBehaviour : MonoBehaviour
     public void Shoot()
     {
         animArm.SetTrigger("Shoot");
+    }
+    public void Eat()
+    {
+
     }
 }
