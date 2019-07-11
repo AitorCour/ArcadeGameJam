@@ -110,7 +110,7 @@ public class PlayerBehaviour : MonoBehaviour
             else timeCounterDamage += Time.deltaTime;
         }
 
-        distanceBetween = Vector2.Distance(transform.position, );
+        //distanceBetween = Vector2.Distance(transform.position, );
     }
     // Update is called once per frame
     public void SetAxis(Vector2 inputAxis)

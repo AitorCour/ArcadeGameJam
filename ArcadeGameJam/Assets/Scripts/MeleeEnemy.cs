@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MeleeEnemy : MonoBehaviour
+public class MeleeEnemy : EnemyBehaviour
 {
     //public float shootCounter;
     //public float shootTime;
@@ -19,24 +19,16 @@ public class MeleeEnemy : MonoBehaviour
     public float radius;
     private bool tired;
     private bool attacking;
-    public bool playerDetected;
-    public bool canDoDamage;
-    private Ecanon canon;
-    private PlayerBehaviour playerBe;
+    //public bool playerDetected;
     public LayerMask player;
-    private EnemyHead head;
-    public Transform[] waypoints;
-    public int waypointIndex = 0;
-    public float speed;
     public bool testing;
-    public int enemyLife;
+    private EnemyHead head;
     // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
-        //shootCounter = 0;
-        canon = GetComponentInChildren<Ecanon>();
-        playerBe = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehaviour>();
-        head = GetComponentInChildren<EnemyHead>();
+        base.Start();
+        speed = 3;
+        enemyLife = 5;
     }
     private void OnDrawGizmosSelected()
     {
@@ -102,7 +94,7 @@ public class MeleeEnemy : MonoBehaviour
         return false;
     }*/
     // Update is called once per frame
-    void Update()
+    protected override void Update()
     {
         Vector2 direction = transform.TransformDirection(Vector2.left);
         RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, distance, player);
@@ -210,91 +202,11 @@ public class MeleeEnemy : MonoBehaviour
             else noDamageCounter += Time.deltaTime;
         }
     }
-    private void Move()
-    {
-        // If Enemy didn't reach last waypoint it can move
-        // If enemy reached last waypoint then it stops
-        if (waypointIndex <= waypoints.Length - 1)
-        {
-            // Move Enemy from current waypoint to the next one
-            // using MoveTowards method
-            transform.position = Vector2.MoveTowards(transform.position,
-               waypoints[waypointIndex].transform.position,
-               speed * Time.deltaTime);
-
-            // If Enemy reaches position of waypoint he walked towards
-            // then waypointIndex is increased by 1
-            // and Enemy starts to walk to the next waypoint
-            if (transform.position == waypoints[waypointIndex].transform.position)
-            {
-                waypointIndex += 1;
-                ChangeRotation();
-            }
-
-            if(transform.position.x < waypoints[0].transform.position.x)
-            {
-                Quaternion target = Quaternion.Euler(0, 180, 0);
-                transform.rotation = Quaternion.Slerp(transform.rotation, target, 1f);
-            }
-            if (transform.position.x > waypoints[1].transform.position.x)
-            {
-                Quaternion target = Quaternion.Euler(0, 0, 0);
-                transform.rotation = Quaternion.Slerp(transform.rotation, target, 1f);
-            }
-        }
-        //Repeat
-        else if (waypointIndex >= waypoints.Length)
-        {
-            waypointIndex = 0;
-            ChangeRotation();
-        }
-    }
-    void ChangeRotation()
-    {
-        if (waypointIndex == 0)
-        {
-            Quaternion target = Quaternion.Euler(0, 0, 0);
-
-            // Dampen towards the target rotation
-            transform.rotation = Quaternion.Slerp(transform.rotation, target, 1f);
-            canon.negative = true;
-        }
-        else if (waypointIndex == 1)
-        {
-            Quaternion target = Quaternion.Euler(0, 180, 0);
-
-            // Dampen towards the target rotation
-            transform.rotation = Quaternion.Slerp(transform.rotation, target, 1f);
-            canon.negative = false;
-        }
-    }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.tag == "Player" && canDoDamage)
-        {
-            playerBe.Damage(1);
-            //Debug.Log("ENEMYCOLLISION");
-        }
-    }
-    public void Damage(int damage)
-    {
-        enemyLife -= damage;
-        if (enemyLife <= 0)
-        {
-            Death();
-            enemyLife = 0;
-        }
-    }
+    
     void Normal()
     {
         Debug.Log("Normal");
         runCounter = 0;
         speed = 2;
-    }
-    void Death()
-    {
-        this.enabled = false;
-        head.enabled = false;
-        transform.position = new Vector2(-20, -20);
     }
 }

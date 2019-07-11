@@ -4,20 +4,12 @@ using UnityEngine;
 
 public class EnemyHead : MonoBehaviour
 {
-    private ShootEnemy enemy;
-    private MeleeEnemy enemyMelee;
+    private EnemyBehaviour enemyBe;
     private PlayerBehaviour plBehaviour;
     public bool shooter = true;
     void Start()
     {
-        if (shooter)
-        {
-            enemy = GetComponentInParent<ShootEnemy>();
-        }
-        else
-        {
-            enemyMelee = GetComponentInParent<MeleeEnemy>();
-        }
+        enemyBe = GetComponentInParent<EnemyBehaviour>();
 
         plBehaviour = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehaviour>();
     }
@@ -25,15 +17,8 @@ public class EnemyHead : MonoBehaviour
     {
         if(collision.tag == "Feet")
         {
-            if (shooter)
-            {
-                enemy.Damage(2);
-            }
-            else
-            {
-                enemyMelee.canDoDamage = false;
-                enemyMelee.Damage(2);
-            }
+            enemyBe.canDoDamage = false;
+            enemyBe.Damage(2);
             plBehaviour.EnemyJump();
         }
     }
