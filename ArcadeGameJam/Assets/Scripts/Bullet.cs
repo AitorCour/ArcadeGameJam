@@ -72,44 +72,44 @@ public class Bullet : MonoBehaviour
 
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "EnemyShoot")
+        if (collision.tag == "Enemy")
         {
             //Debug.Log("UFO COLLISION");
 
-            collision.GetComponent<ShootEnemy>().Damage(damage);
+            collision.GetComponent<EnemyBehaviour>().Damage(damage);
 
             //collision.gameObject.SendMessage("Damage", damage);
 
             Reset();
         }
-        if (collision.tag == "EnemyMelee")
+        else if (bounceBullets && collision.tag != "Player" && collided > 0 && collision.tag != "Bullet" && collision.tag != "Boundary" && collision.tag != "Feet")
         {
-            //Debug.Log("UFO COLLISION");
-
-            collision.GetComponent<MeleeEnemy>().Damage(damage);
-
-            //collision.gameObject.SendMessage("Damage", damage);
-
-            Reset();
-        }
-        else if (bounceBullets && collision.tag != "Player" && collided > 0 && collision.tag != "Bullet" && collision.tag != "Boundary")
-        {
-            //speed *= -1;
+            speed *= -1;
             collided -= 1;
-            dir *= -1;
-            transform.rotation = Quaternion.Euler(0, 0, rot*-2);
+            //dir.y *= -1;
+            transform.rotation = Quaternion.Euler(0, 0, rot*-1);
+            //this.GetComponent<Rigidbody2D>().velocity = new Vector2(speed * -1, 0);
         }
-        else if (collision.tag != "Boundary" && collision.tag != "Bullet" && collided <= 0)
+        else if (bounceBullets && collision.tag != "Boundary" && collision.tag != "Bullet" && collided <= 0 && collision.tag != "Player" && collision.tag != "Feet")
         {
             Reset();
             //Debug.Log("Reseeeeeeeet");
             collided = 4;
             
         }
-        else if(!bounceBullets && collision.tag != "Player" && collision.tag != "Bullet" && collision.tag != "Boundary")
+        else if(!bounceBullets && collision.tag != "Player" && collision.tag != "Bullet" && collision.tag != "Boundary" && collision.tag != "Feet")
         {
-            Reset();
-            //Debug.Log("Reseeeeeeeet Cause Nothing");
+            if (transform.localScale.y >= 7 && collision.tag == "Untagged")
+            {
+                
+                Debug.Log("no tag");
+            }
+            else
+            {
+                Reset();
+                Debug.Log("Reseeeeeeeet Cause Nothing");
+                Debug.Log(collision.tag);
+            }
         }
         //Debug.Log("collision");
     }

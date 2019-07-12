@@ -5,12 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - Boundary
-  - EnemyShoot
   - Feet
   - PowerUp
   - Bullet
   - Arm
-  - EnemyMelee
+  - Enemy
   layers:
   - Default
   - TransparentFX

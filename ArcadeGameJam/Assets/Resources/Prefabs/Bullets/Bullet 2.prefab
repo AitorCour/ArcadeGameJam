@@ -79,7 +79,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 7
 --- !u!114 &5319634450308845963
 MonoBehaviour:
@@ -97,6 +97,7 @@ MonoBehaviour:
   iniSpeed: 20
   damage: 3
   shotFX: {fileID: 0}
+  collided: 2
   bounceBullets: 1
 --- !u!1 &5319634451701776776
 GameObject:
