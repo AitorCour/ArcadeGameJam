@@ -22,7 +22,6 @@ public class MeleeEnemy : EnemyBehaviour
     //public bool playerDetected;
     public LayerMask player;
     public bool testing;
-    private EnemyHead head;
     // Start is called before the first frame update
     protected override void Start()
     {
@@ -33,25 +32,6 @@ public class MeleeEnemy : EnemyBehaviour
     private void OnDrawGizmosSelected()
     {
         Vector2 direction = transform.TransformDirection(Vector2.left) * distance;
-        /*if(!isInFOV)
-        {
-            Debug.DrawLine(transform.position, direction, Color.red);
-        }
-        else if (isInFOV)
-        {
-            Debug.DrawLine(transform.position, direction, Color.green);
-        }
-        Gizmos.DrawWireSphere(transform.position, radius);
-        Vector3 fovLine1 = Quaternion.AngleAxis(angle, transform.forward) * -transform.right * radius;
-        Vector3 fovLine2 = Quaternion.AngleAxis(-angle, transform.forward) * -transform.right * radius;
-        Gizmos.DrawRay(transform.position, fovLine1);
-        Gizmos.DrawRay(transform.position, fovLine2);
-        if(playerBe != null)
-        {
-            Gizmos.color = Color.blue;
-            Gizmos.DrawRay(transform.position, (playerBe.transform.position - transform.position).normalized * radius);
-        }*/
-        //Vector3 fovLine1 = Quaternion.AngleAxis(angle, transform.forward) * -transform.right * radius;
         Vector3 fovLine2 = Quaternion.AngleAxis(-angle, transform.forward) * -transform.right * radius;
         Vector3 fovLine1 = Quaternion.AngleAxis(-angle / 2, transform.forward) * -transform.right * radius;
         //Gizmos.DrawRay(transform.position, fovLine1);

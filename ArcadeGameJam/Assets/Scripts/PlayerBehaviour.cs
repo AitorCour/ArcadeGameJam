@@ -35,13 +35,14 @@ public class PlayerBehaviour : MonoBehaviour
     private float jumpCounter;
     public float jumpTime;
     public LayerMask ground;
+    public LayerMask enemy;
     private bool movingForward = true;
 
     private bool canRecieveDamage = true;
     private float timeCounterDamage;
     public float damageTime;
 
-    private float distanceBetween;
+    public float distance;
     // Start is called before the first frame update
     void Start()
     {
@@ -110,9 +111,28 @@ public class PlayerBehaviour : MonoBehaviour
             else timeCounterDamage += Time.deltaTime;
         }
 
-        //distanceBetween = Vector2.Distance(transform.position, );
+        Vector2 direction = transform.TransformDirection(Vector2.left);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, distance, enemy);
+        if (hit.collider != null)
+        {
+            if (hit.collider.CompareTag("Enemy"))
+            {
+                EnemyBehaviour target = hit.transform.gameObject.GetComponent<EnemyBehaviour>();
+                if (!target.playerDetected)
+                {
+                    Debug.Log("Eat");
+                }
+                else return;
+            }
+            else return;
+        }
     }
     // Update is called once per frame
+    private void OnDrawGizmosSelected()
+    {
+        Vector2 direction = transform.TransformDirection(Vector2.left) * distance;
+        Gizmos.DrawRay(transform.position, direction);
+    }
     public void SetAxis(Vector2 inputAxis)
     {
         axis = inputAxis;

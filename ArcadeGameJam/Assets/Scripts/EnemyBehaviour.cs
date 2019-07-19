@@ -8,7 +8,7 @@ public class EnemyBehaviour : MonoBehaviour
     private EnemyHead head;
 
     protected bool isDead;
-    protected bool playerDetected;
+    public bool playerDetected;
     public bool canDoDamage;
     protected int enemyLife;
 
