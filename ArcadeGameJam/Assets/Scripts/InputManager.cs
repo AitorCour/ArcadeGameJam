@@ -5,59 +5,69 @@ using UnityEngine;
 public class InputManager : MonoBehaviour
 {
     private PlayerBehaviour player;
+    private HUD hud;
     private Weapon weapon;
-    public GameObject pause;
     private bool paused;
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehaviour>();
+        hud = GetComponent<HUD>();
         weapon = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<Weapon>();
-        pause.SetActive(false);
         paused = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Vector2 inputAxis = Vector2.zero;
+        /*Vector2 inputAxis = Vector2.zero;
         inputAxis.x = Input.GetAxisRaw("Horizontal");
-        player.SetAxis(inputAxis);
+        player.SetAxis(inputAxis);*/
+        if(Input.GetAxisRaw("Horizontal") > 0 && !paused)
+        {
+            player.SetAxis(new Vector2(1, 0));
+        }
+        else if (Input.GetAxisRaw("Horizontal") < 0 && !paused)
+        {
+            player.SetAxis(new Vector2(-1, 0));
+        }
+        else player.SetAxis(new Vector2(0, 0));
 
-        if(Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetButtonDown("Jump"))
         {
             player.StartJump();
         }
-        if(Input.GetKeyUp(KeyCode.Space))
+        if(Input.GetButtonUp("Jump"))
         {
             player.StopJump();
         }
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire1") && !paused)
         {
-            if(!player.dead)
+            if(!player.dead || !paused)
             {
                 weapon.ShotWeapon();
                 player.Shoot();
             }
         }
-        if (Input.GetButtonDown("Fire2"))
+        if (Input.GetButtonDown("Fire2") && !paused)
         {
-            if (!player.dead)
+            if (!player.dead || !paused)
             {
                 Debug.Log("Eating");
+                player.Eat();
             }
         }
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetButtonDown("Pause"))
         {
             if(paused)
             {
-                pause.SetActive(false);
+                hud.Pause();
                 paused = false;
                 Time.timeScale = 1;
             }
             else
             {
-                pause.SetActive(true);
+                hud.Pause();
                 paused = true;
                 Time.timeScale = 0;
             }

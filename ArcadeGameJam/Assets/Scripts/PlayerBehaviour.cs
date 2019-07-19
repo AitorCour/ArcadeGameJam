@@ -14,6 +14,7 @@ public class PlayerBehaviour : MonoBehaviour
     private Animator animArm;
     private Weapon weapon;
     private Cannon cannon;
+    private HUD hud;
     private GameObject[] bulletObj;
     private Bullet[] bullet;
 
@@ -43,6 +44,8 @@ public class PlayerBehaviour : MonoBehaviour
     public float damageTime;
 
     public float distance;
+    public bool canEat;
+    public EnemyBehaviour targetEnemy;
     // Start is called before the first frame update
     void Start()
     {
@@ -53,10 +56,13 @@ public class PlayerBehaviour : MonoBehaviour
         arm = GameObject.FindGameObjectWithTag("Arm");
         weapon = GetComponentInChildren<Weapon>();
         cannon = GetComponentInChildren<Cannon>();
+        hud = GameObject.FindGameObjectWithTag("Manager").GetComponent<HUD>();
         bulletObj = GameObject.FindGameObjectsWithTag("Bullet");
         spritePlayer = GetComponentInChildren<SpriteRenderer>();
         canMove = true;
         dead = false;
+        canEat = false;
+        targetEnemy = null;
     }
     void FixedUpdate()
     {
@@ -120,11 +126,29 @@ public class PlayerBehaviour : MonoBehaviour
                 EnemyBehaviour target = hit.transform.gameObject.GetComponent<EnemyBehaviour>();
                 if (!target.playerDetected)
                 {
-                    Debug.Log("Eat");
+                    hud.DisplayText("Press Z/B to eat!");
+                    canEat = true;
+                    targetEnemy = target;
                 }
-                else return;
+                else
+                {
+                    hud.HideText();
+                    canEat = false;
+                    return;
+                }
             }
-            else return;
+            else
+            {
+                hud.HideText();
+                canEat = false;
+                return;
+            }
+        }
+        else
+        {
+            hud.HideText();
+            canEat = false;
+            return;
         }
     }
     // Update is called once per frame
@@ -140,16 +164,17 @@ public class PlayerBehaviour : MonoBehaviour
     private void HorizontalMovement()
     {
         currentVelocity.x = speed * axis.x;
+        //currentVelocity.x = speed * 1;
         if (!canMove) return;
 
-        if (axis.x == 1)
+        if (axis.x >= 0.1)
         {
             anim.SetBool("Walking", true);
             animArm.SetBool("WalkingHead", true);
             movingForward = false;
             ChangeRotation();
         }
-        else if (axis.x == -1)
+        else if (axis.x <= -0.1)
         {
             anim.SetBool("Walking", true);
             animArm.SetBool("WalkingHead", true);
@@ -169,7 +194,6 @@ public class PlayerBehaviour : MonoBehaviour
         else if (!canMove) return;
         isJumping = true;
         jumpCounter = jumpTime;
-        
     }
     public void EnemyJump()
     {
@@ -224,9 +248,8 @@ public class PlayerBehaviour : MonoBehaviour
         {
             Debug.Log("Dead");
             canMove = false;
-            arm.SetActive(false);
             anim.SetTrigger("Dead");
-            animArm.SetTrigger("Dead");
+            animArm.SetTrigger("Death");
             dead = true;
         }
         else return;
@@ -248,6 +271,7 @@ public class PlayerBehaviour : MonoBehaviour
     }
     public void Eat()
     {
-
+        if (!canEat) return;
+        targetEnemy.Damage(50);
     }
 }

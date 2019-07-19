@@ -10,6 +10,8 @@ TagManager:
   - Bullet
   - Arm
   - Enemy
+  - Text
+  - Manager
   layers:
   - Default
   - TransparentFX
