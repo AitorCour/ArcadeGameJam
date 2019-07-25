@@ -129,6 +129,7 @@
     <Compile Include="Assets\Scripts\PowerUps.cs" />
     <Compile Include="Assets\Scripts\Settings.cs" />
     <Compile Include="Assets\Scripts\ShootEnemy.cs" />
+    <Compile Include="Assets\Scripts\TurretEnemy.cs" />
     <Compile Include="Assets\Scripts\Weapon.cs" />
     <None Include="Assets\GlitchShader.shader" />
     <None Include="Assets\Cinemachine\ReleaseNotes.txt" />
