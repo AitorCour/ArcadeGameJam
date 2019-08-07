@@ -6,6 +6,7 @@ public class EnemyBehaviour : MonoBehaviour
 {
     protected PlayerBehaviour playerBe;
     private EnemyHead head;
+    protected Animator anim;
 
     protected bool isDead;
     public bool playerDetected;
@@ -20,6 +21,7 @@ public class EnemyBehaviour : MonoBehaviour
     {
         playerBe = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehaviour>();
         head = GetComponentInChildren<EnemyHead>();
+        anim = GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
@@ -46,9 +48,10 @@ public class EnemyBehaviour : MonoBehaviour
     void Death()
     {
         isDead = true;
+        anim.SetTrigger("Death");
         this.enabled = false;
         head.enabled = false;
-        transform.position = new Vector2(-20, -20);
+        //transform.position = new Vector2(-20, -20);
     }
     protected virtual void Move()
     {

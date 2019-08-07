@@ -44,16 +44,22 @@ public class ShootEnemy : EnemyBehaviour
         else playerDetected = false;
         if (playerDetected)
         {
+            anim.SetBool("Shooting", true);
             if (shootCounter >= shootTime)
             {
                 Debug.Log("Shoot");
+                
                 canon.ShotBullet();
                 shootCounter = 0;
             }
             else shootCounter += Time.deltaTime;
             speed = 0;
         }
-        else Move();
+        else
+        {
+            Move();
+            anim.SetBool("Shooting", false);
+        }
         speed = 1;
     }
     protected override void ChangeRotation()

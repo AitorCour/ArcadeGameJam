@@ -1,0 +1,1233 @@
+fileFormatVersion: 2
+guid: 8365bdad32885a64d9e7e9c4656565b6
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Player_SpriteSheet_Character_BORDER_0
+    21300002: Player_SpriteSheet_Character_BORDER_1
+    21300004: Player_SpriteSheet_Character_BORDER_2
+    21300006: Player_SpriteSheet_Character_BORDER_3
+    21300008: Player_SpriteSheet_Character_BORDER_4
+    21300010: Player_SpriteSheet_Character_BORDER_5
+    21300012: Player_SpriteSheet_Character_BORDER_6
+    21300014: Player_SpriteSheet_Character_BORDER_7
+    21300016: Player_SpriteSheet_Character_BORDER_8
+    21300018: Player_SpriteSheet_Character_BORDER_9
+    21300020: Player_SpriteSheet_Character_BORDER_10
+    21300022: Player_SpriteSheet_Character_BORDER_11
+    21300024: Player_SpriteSheet_Character_BORDER_12
+    21300026: Player_SpriteSheet_Character_BORDER_13
+    21300028: Player_SpriteSheet_Character_BORDER_14
+    21300030: Player_SpriteSheet_Character_BORDER_15
+    21300032: Player_SpriteSheet_Character_BORDER_16
+    21300034: Player_SpriteSheet_Character_BORDER_17
+    21300036: Player_SpriteSheet_Character_BORDER_18
+    21300038: Player_SpriteSheet_Character_BORDER_19
+    21300040: Player_SpriteSheet_Character_BORDER_20
+    21300042: Player_SpriteSheet_Character_BORDER_21
+    21300044: Player_SpriteSheet_Character_BORDER_22
+    21300046: Player_SpriteSheet_Character_BORDER_23
+    21300048: Player_SpriteSheet_Character_BORDER_24
+    21300050: Player_SpriteSheet_Character_BORDER_25
+    21300052: Player_SpriteSheet_Character_BORDER_26
+    21300054: Player_SpriteSheet_Character_BORDER_27
+    21300056: Player_SpriteSheet_Character_BORDER_28
+    21300058: Player_SpriteSheet_Character_BORDER_29
+    21300060: Player_SpriteSheet_Character_BORDER_30
+    21300062: Player_SpriteSheet_Character_BORDER_31
+    21300064: Player_SpriteSheet_Character_BORDER_32
+    21300066: Player_SpriteSheet_Character_BORDER_33
+    21300068: Player_SpriteSheet_Character_BORDER_34
+    21300070: Player_SpriteSheet_Character_BORDER_35
+    21300072: Player_SpriteSheet_Character_BORDER_36
+    21300074: Player_SpriteSheet_Character_BORDER_37
+    21300076: Player_SpriteSheet_Character_BORDER_38
+    21300078: Player_SpriteSheet_Character_BORDER_39
+    21300080: Player_SpriteSheet_Character_BORDER_40
+    21300082: Player_SpriteSheet_Character_BORDER_41
+    21300084: Player_SpriteSheet_Character_BORDER_42
+    21300086: Player_SpriteSheet_Character_BORDER_43
+    21300088: Player_SpriteSheet_Character_BORDER_44
+    21300090: Player_SpriteSheet_Character_BORDER_45
+    21300092: Player_SpriteSheet_Character_BORDER_46
+    21300094: Player_SpriteSheet_Character_BORDER_47
+    21300096: Player_SpriteSheet_Character_BORDER_48
+    21300098: Player_SpriteSheet_Character_BORDER_49
+    21300100: Player_SpriteSheet_Character_BORDER_50
+    21300102: Player_SpriteSheet_Character_BORDER_51
+    21300104: Player_SpriteSheet_Character_BORDER_52
+    21300106: Player_SpriteSheet_Character_BORDER_53
+  externalObjects: {}
+  serializedVersion: 9
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 8
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 0
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 2
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 1
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 1
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Player_SpriteSheet_Character_BORDER_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 106.666664
+        width: 16
+        height: 21.333334
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3fe6e3547fd6ae408bac5a55699b537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_SpriteSheet_Character_BORDER_1
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 106.666664
+        width: 16
+        height: 21.333334
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43596d1e42bac954a88706d963215bb0
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_SpriteSheet_Character_BORDER_2
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 106.666664
+        width: 16
+        height: 21.333334
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6869e4b306f240f47be1854a57ad9814
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_SpriteSheet_Character_BORDER_3
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 106.666664
+        width: 16
+        height: 21.333334
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b74ba102d62c67e42830ea8d77fa13f2
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_SpriteSheet_Character_BORDER_4
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 106.666664
+        width: 16
+        height: 21.333334
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d43fae80c1584248b304dfe16e71f40
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_SpriteSheet_Character_BORDER_5
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 106.666664
+        width: 16
+        height: 21.333334
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b159fe6dcb032d24b806ccd9ed3c8c8f
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_SpriteSheet_Character_BORDER_6
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 106.666664
+        width: 16
+        height: 21.333334
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c18a4e795ff1c04b8d88a586d92a2fc
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_SpriteSheet_Character_BORDER_7
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 106.666664
+        width: 16
+        height: 21.333334
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5dafc0cfd828416458f49adc7090b3a2
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_SpriteSheet_Character_BORDER_8
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 106.666664
+        width: 16
+        height: 21.333334
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a77ff2cdfdc4b1a4f9bb1199523907a0
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_SpriteSheet_Character_BORDER_9
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 106.666664
+        width: 16
+        height: 21.333334
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5608d738db62919428eec3466f24fc9f
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_SpriteSheet_Character_BORDER_10
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 106.666664
+        width: 16
+        height: 21.333334
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fbde0fa86523a314cb657bd3177f86a0
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_SpriteSheet_Character_BORDER_11
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 106.666664
+        width: 16
+        height: 21.333334
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc29236eed9f6024688bb80bf3845e94
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_SpriteSheet_Character_BORDER_12
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 106.666664
+        width: 16
+        height: 21.333334
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8bb3c7c68ae3f34891125830320b017
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_SpriteSheet_Character_BORDER_13
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 106.666664
+        width: 16
+        height: 21.333334
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1f5059ca9752734fb6442962bb13292
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_SpriteSheet_Character_BORDER_14
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 106.666664
+        width: 16
+        height: 21.333334
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 10dc15d0b8014f24099efd0334b65cb4
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_SpriteSheet_Character_BORDER_15
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 106.666664
+        width: 16
+        height: 21.333334
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f1db882b165a0e48bf61ab1b44ee600
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_SpriteSheet_Character_BORDER_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 85.666664
+        width: 16
+        height: 21.333334
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca2f08fd2d43b9c4a9ff2113651970e0
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_SpriteSheet_Character_BORDER_17
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 85.666664
+        width: 16
+        height: 21.333334
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e93441540c2ad14989196e58dda87f7
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_SpriteSheet_Character_BORDER_18
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 85.666664
+        width: 16
+        height: 21.333334
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e5a32c4b2a89264988ab23f721b67f1
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_SpriteSheet_Character_BORDER_19
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 85.666664
+        width: 16
+        height: 21.333334
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 50a1a9dee22b8644293ba3f9883524ff
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_SpriteSheet_Character_BORDER_20
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 85.666664
+        width: 16
+        height: 21.333334
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0427fbd5f78e0cc40b224d5db8ab33a8
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_SpriteSheet_Character_BORDER_21
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 85.666664
+        width: 16
+        height: 21.333334
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1655e5ed75a9d745a3ba495a8ec7133
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_SpriteSheet_Character_BORDER_22
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 85.666664
+        width: 16
+        height: 21.333334
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d4e0edd21fc3ef4e88d2b73bb6c9f5b
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_SpriteSheet_Character_BORDER_23
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 85.666664
+        width: 16
+        height: 21.333334
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92ebf417571a52649b049f198d52f58c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_SpriteSheet_Character_BORDER_24
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 85.666664
+        width: 16
+        height: 21.333334
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7de0a8625cfe9541abe826d3f484f5a
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_SpriteSheet_Character_BORDER_25
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 85.666664
+        width: 16
+        height: 21.333334
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a45260a0fcc05434ca7751391450a04a
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_SpriteSheet_Character_BORDER_26
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 85.666664
+        width: 16
+        height: 21.333334
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43cf80807e087114dacfe039506cf791
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_SpriteSheet_Character_BORDER_27
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 85.666664
+        width: 16
+        height: 21.333334
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67638f687adac2945b5dc888d34c39ec
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_SpriteSheet_Character_BORDER_28
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 85.666664
+        width: 16
+        height: 21.333334
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb5e3628c55fae74a9044e47655b472a
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_SpriteSheet_Character_BORDER_29
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 85.666664
+        width: 16
+        height: 21.333334
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53f6f9d27faba014da13fdd40b4decbb
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_SpriteSheet_Character_BORDER_30
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 85.666664
+        width: 16
+        height: 21.333334
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b6e4615365432e4583873b61a6a67be
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_SpriteSheet_Character_BORDER_31
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 85.666664
+        width: 16
+        height: 21.333334
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56575a92c2e842643baa1c54b11b35aa
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_SpriteSheet_Character_BORDER_32
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 64.666664
+        width: 16
+        height: 21.333334
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33ad9905ef6abd14fac3b08257c84e81
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_SpriteSheet_Character_BORDER_33
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 64.666664
+        width: 16
+        height: 21.333334
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ede09d04119d9442a5fedb3e40a9c2a
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_SpriteSheet_Character_BORDER_34
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 64.666664
+        width: 16
+        height: 21.333334
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1dd50e8392feb64449f30394b4617eec
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_SpriteSheet_Character_BORDER_35
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 64.666664
+        width: 16
+        height: 21.333334
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d9d5acad2483f245a402343a13b2994
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_SpriteSheet_Character_BORDER_36
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 64.666664
+        width: 16
+        height: 21.333334
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5de1b34dd8513c54caebae6765735703
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_SpriteSheet_Character_BORDER_37
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 64.666664
+        width: 16
+        height: 21.333334
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6dab3fdd9d009404299d52167c59fa23
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_SpriteSheet_Character_BORDER_38
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 64.666664
+        width: 16
+        height: 21.333334
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64ab0d1d18e6d3440a4abc3573b05935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_SpriteSheet_Character_BORDER_39
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 64.666664
+        width: 16
+        height: 21.333334
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf10f71445c417f4fb61565a1cdf940c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_SpriteSheet_Character_BORDER_40
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 64.666664
+        width: 16
+        height: 21.333334
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90c2020f797bed247b1e95cfb02ffc0f
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_SpriteSheet_Character_BORDER_41
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 64.666664
+        width: 16
+        height: 21.333334
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4e30fe9c82594546a46c5f4c00cdb69
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_SpriteSheet_Character_BORDER_42
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 64.666664
+        width: 16
+        height: 21.333334
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6feb300052404b341b0be42f5c5da882
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_SpriteSheet_Character_BORDER_43
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 64.666664
+        width: 16
+        height: 21.333334
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 060bf12df92b0b2488c8f5fcea9f43b9
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_SpriteSheet_Character_BORDER_44
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 64.666664
+        width: 16
+        height: 21.333334
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8078da8639af3f4b90a49547d879cf3
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_SpriteSheet_Character_BORDER_45
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 64.666664
+        width: 16
+        height: 21.333334
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0fb7aab8661830f47a1bf29aba48accc
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_SpriteSheet_Character_BORDER_46
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 64.666664
+        width: 16
+        height: 21.333334
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b6caa921e1ec7242bb3ee2517522b0f
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_SpriteSheet_Character_BORDER_47
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 64.666664
+        width: 16
+        height: 21.333334
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af3db21a7b5f62c469e7ce85a708640b
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_SpriteSheet_Character_BORDER_48
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 43.666664
+        width: 16
+        height: 21.333334
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 998b82f8016b29644a721db4aa6e718e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_SpriteSheet_Character_BORDER_49
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 43.666664
+        width: 16
+        height: 21.333334
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 819e43aebe3a163488f48c8853f9509d
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_SpriteSheet_Character_BORDER_50
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 43.666664
+        width: 16
+        height: 21.333334
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9be8060eeaea0543923381ff8861c60
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_SpriteSheet_Character_BORDER_51
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 43.666664
+        width: 16
+        height: 21.333334
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca9702d8816e8a240848e6ae7eb3aad4
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_SpriteSheet_Character_BORDER_52
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 43.666664
+        width: 16
+        height: 21.333334
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39ad45faabc28cd408301f471131197a
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_SpriteSheet_Character_BORDER_53
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 43.666664
+        width: 16
+        height: 21.333334
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb8e7c7468146bd4982b9840ca7ec5a5
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: c2a97c42c57c0be4b9f23a349b32fa52
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
