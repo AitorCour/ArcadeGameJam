@@ -8,9 +8,12 @@ public class EnemyBehaviour : MonoBehaviour
     private EnemyHead head;
     protected Animator anim;
 
-    protected bool isDead;
+    public bool isDead;
     public bool playerDetected;
+    public bool playerSeen;
     public bool canDoDamage;
+    private bool isRunning;
+    private float runDeathCounter;
     protected int enemyLife;
 
     public Transform[] waypoints;
@@ -22,12 +25,24 @@ public class EnemyBehaviour : MonoBehaviour
         playerBe = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehaviour>();
         head = GetComponentInChildren<EnemyHead>();
         anim = GetComponentInChildren<Animator>();
+        
     }
 
     // Update is called once per frame
     protected virtual void Update()
     {
         //Move();
+        if(isRunning == true)
+        {
+            speed *= 5;
+            Move();
+            if (runDeathCounter >= 2)
+            {
+                isRunning = false;
+                Death();
+            }
+            else runDeathCounter += Time.deltaTime;
+        }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -38,20 +53,31 @@ public class EnemyBehaviour : MonoBehaviour
     }
     public void Damage(int damage)
     {
+        Debug.Log("DamageDeath");
         enemyLife -= damage;
         if (enemyLife <= 0)
         {
-            Death();
+            NoLife();
             enemyLife = 0;
         }
     }
-    void Death()
+    protected virtual void NoLife()
+    {
+        Death();
+    }
+    public void Death()
     {
         isDead = true;
-        anim.SetTrigger("Death");
+        //anim.SetTrigger("Death");
         this.enabled = false;
         head.enabled = false;
-        //transform.position = new Vector2(-20, -20);
+        transform.position = new Vector2(-20, -20);
+    }
+    protected virtual void RunDeath()
+    {
+        isRunning = true;
+        runDeathCounter = 0;
+        anim.SetTrigger("Death");
     }
     protected virtual void Move()
     {

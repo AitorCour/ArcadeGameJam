@@ -17,7 +17,8 @@ public class ShootEnemy : EnemyBehaviour
         shootCounter = 0;
         canon = GetComponentInChildren<Ecanon>();
         speed = 1;
-        enemyLife = 5;
+        enemyLife = 8;
+        ChangeRotation();
     }
     private void OnDrawGizmosSelected()
     {
@@ -38,6 +39,7 @@ public class ShootEnemy : EnemyBehaviour
             if (hit.collider.CompareTag("Player"))
             {
                 playerDetected = true;
+                playerSeen = true;
                 //Debug.Log("PlayerDetected");
             }
         }
@@ -61,6 +63,10 @@ public class ShootEnemy : EnemyBehaviour
             anim.SetBool("Shooting", false);
         }
         speed = 1;
+    }
+    protected override void NoLife()
+    {
+        RunDeath();
     }
     protected override void ChangeRotation()
     {

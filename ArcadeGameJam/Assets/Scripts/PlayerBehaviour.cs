@@ -44,8 +44,11 @@ public class PlayerBehaviour : MonoBehaviour
     public float damageTime;
 
     public float distance;
-    public bool canEat;
+    private bool canEat;
+    public bool eating;
+    public float eatCounter;
     public EnemyBehaviour targetEnemy;
+    private Vector2 enemyPosition;
     // Start is called before the first frame update
     void Start()
     {
@@ -124,7 +127,7 @@ public class PlayerBehaviour : MonoBehaviour
             if (hit.collider.CompareTag("Enemy"))
             {
                 EnemyBehaviour target = hit.transform.gameObject.GetComponent<EnemyBehaviour>();
-                if (!target.playerDetected)
+                if (!target.playerSeen)
                 {
                     hud.DisplayText("Press Z/B to eat!");
                     canEat = true;
@@ -149,6 +152,18 @@ public class PlayerBehaviour : MonoBehaviour
             hud.HideText();
             canEat = false;
             return;
+        }
+        if(eating == true)
+        {
+            canEat = false;
+            Debug.Log("Loooooop EAT");
+            if (eatCounter >= 4)
+            {
+                eating = false;
+                targetEnemy.Death();
+                animArm.SetBool("Eating", false);
+            }
+            else eatCounter += Time.deltaTime;
         }
     }
     // Update is called once per frame
@@ -241,6 +256,10 @@ public class PlayerBehaviour : MonoBehaviour
                 life = 0;
             }
         }
+        if(eating)
+        {
+            StopEating();
+        }
     }
     void Death()
     {
@@ -271,7 +290,21 @@ public class PlayerBehaviour : MonoBehaviour
     }
     public void Eat()
     {
+       
         if (!canEat) return;
-        targetEnemy.Damage(50);
+        Debug.Log("Eating");
+        eating = true;
+        eatCounter = 0;
+        enemyPosition = targetEnemy.transform.position;
+        targetEnemy.transform.position = new Vector2(-20, -20);
+        animArm.SetBool("Eating", true);
+        animArm.SetTrigger("Eat");
+    }
+    public void StopEating()
+    {
+        if (targetEnemy.isDead) return;
+        eating = false;
+        targetEnemy.transform.position = enemyPosition;
+        animArm.SetBool("Eating", false);
     }
 }
