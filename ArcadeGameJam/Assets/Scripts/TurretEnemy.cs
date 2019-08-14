@@ -6,7 +6,9 @@ public class TurretEnemy : EnemyBehaviour
 {
     public float shootCounter;
     public float shootDistance;
-
+    public float shootTime;
+    private Ecanon cannon;
+    //public Transform cannonTrans;
     private Quaternion lookAt;
     private Quaternion targetRotation;
     public float lookSpeed = 50;
@@ -16,7 +18,8 @@ public class TurretEnemy : EnemyBehaviour
     {
         base.Start();
         shootCounter = 0;
-        //canon = GetComponentInChildren<Ecanon>();
+        cannon = GetComponentInChildren<Ecanon>();
+
         speed = 1;
         enemyLife = 5;
     }
@@ -29,17 +32,27 @@ public class TurretEnemy : EnemyBehaviour
         if (distance < shootDistance)
         {
             playerDetected = true;
-            Debug.Log("Shoooooooooooot");
         }
         else if(distance > shootDistance)
         {
             playerDetected = false;
+        }
+        if(playerDetected)
+        {
+            if (shootCounter >= shootTime)
+            {
+                Debug.Log("Shoot");
+
+                cannon.ShotBullet();
+                shootCounter = 0;
+            }
+            else shootCounter += Time.deltaTime;
         }
         Debug.DrawLine(this.transform.position, playerBe.transform.position, Color.blue);
 
         Vector3 vectorToTarget = playerBe.transform.position - transform.position;
         float angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg;
         Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
-        transform.rotation = Quaternion.Slerp(transform.rotation, q, Time.deltaTime * lookSpeed);
+        cannon.transform.rotation = Quaternion.Slerp(cannon.transform.rotation, q, Time.deltaTime * lookSpeed);
     }
 }

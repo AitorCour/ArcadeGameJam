@@ -5,7 +5,6 @@ using UnityEngine;
 public class EnemyBehaviour : MonoBehaviour
 {
     protected PlayerBehaviour playerBe;
-    private EnemyHead head;
     protected Animator anim;
 
     public bool isDead;
@@ -23,7 +22,6 @@ public class EnemyBehaviour : MonoBehaviour
     protected virtual void Start()
     {
         playerBe = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehaviour>();
-        head = GetComponentInChildren<EnemyHead>();
         anim = GetComponentInChildren<Animator>();
         
     }
@@ -70,7 +68,6 @@ public class EnemyBehaviour : MonoBehaviour
         isDead = true;
         //anim.SetTrigger("Death");
         this.enabled = false;
-        head.enabled = false;
         transform.position = new Vector2(-20, -20);
     }
     protected virtual void RunDeath()
