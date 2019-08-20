@@ -73,6 +73,14 @@ public class Ecanon : MonoBehaviour
         currentBullet++;
         if(currentBullet >= maxAmmo) currentBullet = 0;
     }
+    public void ShotRotateBullets()
+    {
+        float zRot = transform.eulerAngles.z;
+
+        bullets[currentBullet].ShotBullet(transform.position, zRot - 90);
+        currentBullet++;
+        if (currentBullet >= maxAmmo) currentBullet = 0;
+    }
     public void Orient_0()
     {
         bullets[currentBullet].speed = -3;

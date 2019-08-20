@@ -10,6 +10,7 @@ public class ShootEnemy : EnemyBehaviour
     //public bool playerDetected;
     public LayerMask player;
     private Ecanon canon;
+    public float lookSpeed = 50;
     // Start is called before the first frame update
     protected override void Start()
     {
@@ -33,7 +34,7 @@ public class ShootEnemy : EnemyBehaviour
 
         Vector2 direction = transform.TransformDirection(Vector2.left);
         RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, distance, player);
-        if (hit.collider != null)
+        /*if (hit.collider != null)
         {
             //Debug.Log(hit.collider.gameObject.name);
             if (hit.collider.CompareTag("Player"))
@@ -43,7 +44,7 @@ public class ShootEnemy : EnemyBehaviour
                 //Debug.Log("PlayerDetected");
             }
         }
-        else playerDetected = false;
+        else playerDetected = false;*/
         if (playerDetected)
         {
             anim.SetBool("Shooting", true);
@@ -51,7 +52,7 @@ public class ShootEnemy : EnemyBehaviour
             {
                 Debug.Log("Shoot");
                 
-                canon.ShotBullet();
+                canon.ShotRotateBullets();
                 shootCounter = 0;
             }
             else shootCounter += Time.deltaTime;
@@ -63,6 +64,20 @@ public class ShootEnemy : EnemyBehaviour
             anim.SetBool("Shooting", false);
         }
         speed = 1;
+
+        Debug.DrawLine(this.transform.position, playerBe.transform.position, Color.blue);
+
+        Vector3 vectorToTarget = playerBe.transform.position - transform.position;
+        float angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg;
+        Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
+        canon.transform.rotation = Quaternion.Slerp(canon.transform.rotation, q, Time.deltaTime * lookSpeed);
+        
+        //Esto dispara a la derecha
+        if (angle < 90 && angle > -90)
+        {
+            playerDetected = true;
+        }
+        else playerDetected = false;
     }
     protected override void NoLife()
     {

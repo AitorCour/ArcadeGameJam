@@ -43,7 +43,7 @@ public class TurretEnemy : EnemyBehaviour
             {
                 Debug.Log("Shoot");
 
-                cannon.ShotBullet();
+                cannon.ShotRotateBullets();
                 shootCounter = 0;
             }
             else shootCounter += Time.deltaTime;
