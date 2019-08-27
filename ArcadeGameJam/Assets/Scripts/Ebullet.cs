@@ -13,11 +13,13 @@ public class Ebullet : MonoBehaviour
     protected Vector2 dir;
 
     public AudioSource shotFX;
-
+    private Animator anim;
     // Use this for initialization
     protected virtual void Start()
     {
         iniPos = transform.position;
+        anim = GetComponentInChildren<Animator>();
+        anim.enabled = false;
     }
 
     // Update is called once per frame
@@ -41,12 +43,14 @@ public class Ebullet : MonoBehaviour
             shotFX.pitch = Random.Range(0.9f, 1.1f);
             shotFX.Play();
         }
+        anim.enabled = true;
     }
 
     public virtual void ShotBullet(Vector2 origin, float zRot)
     {
         ShotBullet(origin, Vector2.down);
         transform.rotation = Quaternion.Euler(0, 0, zRot);
+        anim.enabled = true;
     }
 
     public virtual void Reset()
@@ -54,6 +58,7 @@ public class Ebullet : MonoBehaviour
         transform.position = iniPos;
         shot = false;
         transform.rotation = Quaternion.Euler(0, 0, 0);
+        anim.enabled = false;
     }
 
     protected void OnTriggerExit2D(Collider2D collision)

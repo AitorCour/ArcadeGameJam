@@ -25,6 +25,7 @@ public class PlayerBehaviour : MonoBehaviour
     //Save
     public float speed;
     public int life;
+    private int iniLife = 1;
     public float jumpForce;
     public bool tripleCannon;
     public bool bounce;
@@ -66,12 +67,14 @@ public class PlayerBehaviour : MonoBehaviour
         dead = false;
         canEat = false;
         targetEnemy = null;
+        life = iniLife;
+        //hud.SetLife(life);
     }
     void FixedUpdate()
     {
         isGrounded = Physics2D.OverlapCircle(feetPos.position, checkRadius, ground);
-
-        if(isJumping)
+        hud.SetLife(life);
+        if (isJumping)
         {
             //rb.velocity = Vector2.up * jumpForce;
             jumpCounter -= Time.deltaTime;
@@ -119,7 +122,19 @@ public class PlayerBehaviour : MonoBehaviour
             }
             else timeCounterDamage += Time.deltaTime;
         }
+        if (eating)
+        {
+            canEat = false;
+            //Debug.Log("Loooooop EAT");
+            if (eatCounter >= 4)
+            {
 
+                eating = false;
+                targetEnemy.Death();
+                animArm.SetBool("Eating", false);
+            }
+            else eatCounter += Time.deltaTime;
+        }
         Vector2 direction = transform.TransformDirection(Vector2.left);
         RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, distance, enemy);
         if (hit.collider != null)
@@ -152,18 +167,6 @@ public class PlayerBehaviour : MonoBehaviour
             hud.HideText();
             canEat = false;
             return;
-        }
-        if(eating == true)
-        {
-            canEat = false;
-            Debug.Log("Loooooop EAT");
-            if (eatCounter >= 4)
-            {
-                eating = false;
-                targetEnemy.Death();
-                animArm.SetBool("Eating", false);
-            }
-            else eatCounter += Time.deltaTime;
         }
     }
     // Update is called once per frame
@@ -259,6 +262,8 @@ public class PlayerBehaviour : MonoBehaviour
         if(eating)
         {
             StopEating();
+            targetEnemy.canMove = true;
+            targetEnemy.transform.position = transform.position;
         }
     }
     void Death()
@@ -290,13 +295,13 @@ public class PlayerBehaviour : MonoBehaviour
     }
     public void Eat()
     {
-       
         if (!canEat) return;
         Debug.Log("Eating");
         eating = true;
         eatCounter = 0;
         enemyPosition = targetEnemy.transform.position;
         targetEnemy.transform.position = new Vector2(-20, -20);
+        targetEnemy.canMove = false;
         animArm.SetBool("Eating", true);
         animArm.SetTrigger("Eat");
     }

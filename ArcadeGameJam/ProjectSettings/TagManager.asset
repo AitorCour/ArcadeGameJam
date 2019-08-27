@@ -12,6 +12,9 @@ TagManager:
   - Enemy
   - Text
   - Manager
+  - heart
+  - midHeart
+  - containerHeart
   layers:
   - Default
   - TransparentFX

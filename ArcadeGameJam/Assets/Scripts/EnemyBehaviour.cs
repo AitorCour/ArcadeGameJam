@@ -12,6 +12,7 @@ public class EnemyBehaviour : MonoBehaviour
     public bool playerSeen;
     public bool canDoDamage;
     private bool isRunning;
+    public bool canMove;
     private float runDeathCounter;
     protected int enemyLife;
 
@@ -23,12 +24,13 @@ public class EnemyBehaviour : MonoBehaviour
     {
         playerBe = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehaviour>();
         anim = GetComponentInChildren<Animator>();
-        
+        canMove = true;
     }
 
     // Update is called once per frame
     protected virtual void Update()
     {
+        if (!canMove) return;
         //Move();
         if(isRunning == true)
         {

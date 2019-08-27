@@ -6,7 +6,8 @@ public class ShootEnemy : EnemyBehaviour
 {
     public float shootCounter;
     public float shootTime;
-    public float distance;
+    //public float distance;
+    public float shootDistance;
     //public bool playerDetected;
     public LayerMask player;
     private Ecanon canon;
@@ -21,20 +22,20 @@ public class ShootEnemy : EnemyBehaviour
         enemyLife = 8;
         ChangeRotation();
     }
-    private void OnDrawGizmosSelected()
+    /*private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
         Vector2 direction = transform.TransformDirection(Vector2.left) * distance;
         Gizmos.DrawRay(transform.position, direction);
-    }
+    }*/
     // Update is called once per frame
     protected override void Update()
     {
         base.Update();
 
-        Vector2 direction = transform.TransformDirection(Vector2.left);
+        /*Vector2 direction = transform.TransformDirection(Vector2.left);
         RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, distance, player);
-        /*if (hit.collider != null)
+        if (hit.collider != null)
         {
             //Debug.Log(hit.collider.gameObject.name);
             if (hit.collider.CompareTag("Player"))
@@ -71,12 +72,17 @@ public class ShootEnemy : EnemyBehaviour
         float angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg;
         Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
         canon.transform.rotation = Quaternion.Slerp(canon.transform.rotation, q, Time.deltaTime * lookSpeed);
-        
+        float distance = Vector2.Distance(this.transform.position, playerBe.transform.position);
         //Esto dispara a la derecha
-        if (angle < 90 && angle > -90)
+        if (angle < 90 && angle > -90 && !canon.negative && distance < shootDistance 
+            || angle > 90 && angle < 270 && canon.negative && distance < shootDistance)
         {
             playerDetected = true;
         }
+        /*if (angle > 90 && angle < -90 && canon.negative)
+        {
+            playerDetected = true;
+        }*/
         else playerDetected = false;
     }
     protected override void NoLife()

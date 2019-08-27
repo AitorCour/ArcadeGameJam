@@ -53,7 +53,6 @@ public class InputManager : MonoBehaviour
         {
             if (!player.dead || !paused)
             {
-                Debug.Log("Eating");
                 player.Eat();
             }
         }
