@@ -193,5 +193,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: -3
-  damage: 3
+  damage: 1
   shotFX: {fileID: 0}

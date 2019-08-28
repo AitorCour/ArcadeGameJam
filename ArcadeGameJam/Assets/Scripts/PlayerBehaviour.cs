@@ -25,7 +25,7 @@ public class PlayerBehaviour : MonoBehaviour
     //Save
     public float speed;
     public int life;
-    private int iniLife = 1;
+    public int iniLife;
     public float jumpForce;
     public bool tripleCannon;
     public bool bounce;
@@ -68,12 +68,11 @@ public class PlayerBehaviour : MonoBehaviour
         canEat = false;
         targetEnemy = null;
         life = iniLife;
-        //hud.SetLife(life);
+        //SetLife();
     }
     void FixedUpdate()
     {
         isGrounded = Physics2D.OverlapCircle(feetPos.position, checkRadius, ground);
-        hud.SetLife(life);
         if (isJumping)
         {
             //rb.velocity = Vector2.up * jumpForce;
@@ -252,6 +251,7 @@ public class PlayerBehaviour : MonoBehaviour
         if(canRecieveDamage && !dead)
         {
             life -= damage;
+            SetLife();
             canRecieveDamage = false;
             if (life <= 0)
             {
@@ -311,5 +311,21 @@ public class PlayerBehaviour : MonoBehaviour
         eating = false;
         targetEnemy.transform.position = enemyPosition;
         animArm.SetBool("Eating", false);
+    }
+    private void SetLife()
+    {
+        Debug.Log("function Called");
+        if (hud != null)
+        {
+            hud.SetLife(life);
+            Debug.Log("NotNULL");
+        }
+        if(hud == null)
+        {
+            iniLife = life;
+            hud = GameObject.FindGameObjectWithTag("Manager").GetComponent<HUD>();
+            hud.SetLife(life);
+            Debug.Log("NULL");
+        }
     }
 }

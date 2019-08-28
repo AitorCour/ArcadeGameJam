@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class HUD : MonoBehaviour
 {
     public GameObject pauseObj;
+    private PlayerBehaviour player;
     private bool paused;
 
     private GameObject textObj;
@@ -29,16 +30,16 @@ public class HUD : MonoBehaviour
         hearts = GameObject.FindGameObjectsWithTag("heart");
         midHeart = GameObject.FindGameObjectWithTag("midHeart");
         containerHearts = GameObject.FindGameObjectsWithTag("containerHeart");
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehaviour>();
         for (int i = 0; i < maxHearts; i++)
         {
-            //xPos = containerHearts[i].anchoredPosition;
             containerHearts[i].GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 100);
-            hearts[i].GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 100);
         }
-        midHeart.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 100);
+        ResetLife();
         Debug.Log("Hearts");
         nHearts = 2;
         HeartManager();
+        SetLife(player.iniLife);
     }
     public void Pause()
     {
@@ -64,7 +65,7 @@ public class HUD : MonoBehaviour
         textObj.SetActive(false);
         textActive = false;
     }
-    public void AddContainers()
+    public void AddContainers()//Suma contenedores de corazones con el power up
     {
         nHearts++;
         HeartManager();
@@ -79,6 +80,7 @@ public class HUD : MonoBehaviour
     }
     public void SetLife(int life)
     {
+        ResetLife();
         bool isEven = life % 2 == 0;
         if (isEven)
         {
@@ -97,8 +99,20 @@ public class HUD : MonoBehaviour
                 hearts[j].GetComponent<RectTransform>().anchoredPosition = new Vector2((j * 150) + 100, -100);
                 b = j + 1;
             }
+            if(player.life == 1)
+            {
+                b -= 1;
+            }
             midHeart.GetComponent<RectTransform>().anchoredPosition = new Vector2((b * 150) + 100, -100);
-
         }
+    }
+    private void ResetLife()
+    {
+        //Llamar cada vez que pierda vida, para recolocarla de 0
+        for (int i = 0; i < maxHearts; i++)
+        {
+            hearts[i].GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 100);
+        }
+        midHeart.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 100);
     }
 }
