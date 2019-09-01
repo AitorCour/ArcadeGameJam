@@ -26,11 +26,13 @@ public class PlayerBehaviour : MonoBehaviour
     public float speed;
     public int life;
     public int iniLife;
+    public int maxLife;
     public float jumpForce;
     public bool tripleCannon;
     public bool bounce;
     public int bulletBounces;
     public int cannonsNumber;
+    public float bulletsScale;
 
     public Transform feetPos;
     public float checkRadius;
@@ -130,6 +132,8 @@ public class PlayerBehaviour : MonoBehaviour
 
                 eating = false;
                 targetEnemy.Death();
+                //Subir vida
+                Cure(1);
                 animArm.SetBool("Eating", false);
             }
             else eatCounter += Time.deltaTime;
@@ -266,6 +270,22 @@ public class PlayerBehaviour : MonoBehaviour
             targetEnemy.transform.position = transform.position;
         }
     }
+    private void Cure(int cure)
+    {
+        if (life >= maxLife && !dead) return;
+        else
+        {
+            life += cure;
+            SetLife();
+        }
+    }
+    public void GetLife()
+    {
+        maxLife += 2;
+        life += 2;
+        hud.AddContainers();
+        SetLife();
+    }
     void Death()
     {
         if (!dead)
@@ -283,6 +303,11 @@ public class PlayerBehaviour : MonoBehaviour
         tripleCannon = true;
         cannon.cannons = cannonsNumber;
     }
+    public void BulletsScale()
+    {
+        cannon.scale = bulletsScale;
+    }
+
     public void BounceBullet()
     {
         bounce = true;
@@ -318,14 +343,12 @@ public class PlayerBehaviour : MonoBehaviour
         if (hud != null)
         {
             hud.SetLife(life);
-            Debug.Log("NotNULL");
         }
         if(hud == null)
         {
             iniLife = life;
             hud = GameObject.FindGameObjectWithTag("Manager").GetComponent<HUD>();
             hud.SetLife(life);
-            Debug.Log("NULL");
         }
     }
 }

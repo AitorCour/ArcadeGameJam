@@ -6,7 +6,7 @@ public class Cannon : MonoBehaviour
 {
     //public bool tripleCannon = false;
     public int bounces;
-    public int scale;
+    public float scale;
     public int cannons;
     private int rotation;
     public void ShotCannon(Cartridge c)

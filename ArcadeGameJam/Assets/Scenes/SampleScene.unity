@@ -231,11 +231,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b527eb49f0242648b31d2aba42b61ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
-  jump: 0
   tripleCannon: 0
   bounce: 0
   life: 0
+  size: 0
+  damage: 0
+  triplePrefab: {fileID: 0}
+  bouncePrefab: {fileID: 0}
+  lifePrefab: {fileID: 0}
+  sizePrefab: {fileID: 0}
+  damagePrefab: {fileID: 0}
 --- !u!61 &79978226
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -387,11 +392,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b527eb49f0242648b31d2aba42b61ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
-  jump: 0
   tripleCannon: 0
   bounce: 0
   life: 0
+  size: 0
+  damage: 0
+  triplePrefab: {fileID: 21300026, guid: 3bb41563f9bca804c91677c2e574f81d, type: 3}
+  bouncePrefab: {fileID: 21300022, guid: 3bb41563f9bca804c91677c2e574f81d, type: 3}
+  lifePrefab: {fileID: 21300024, guid: 3bb41563f9bca804c91677c2e574f81d, type: 3}
+  sizePrefab: {fileID: 21300028, guid: 3bb41563f9bca804c91677c2e574f81d, type: 3}
+  damagePrefab: {fileID: 21300030, guid: 3bb41563f9bca804c91677c2e574f81d, type: 3}
 --- !u!61 &205758975
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2441,11 +2451,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b527eb49f0242648b31d2aba42b61ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
-  jump: 0
   tripleCannon: 0
   bounce: 0
   life: 0
+  size: 0
+  damage: 0
+  triplePrefab: {fileID: 0}
+  bouncePrefab: {fileID: 0}
+  lifePrefab: {fileID: 0}
+  sizePrefab: {fileID: 0}
+  damagePrefab: {fileID: 0}
 --- !u!61 &903889695
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2824,11 +2839,13 @@ MonoBehaviour:
   speed: 5
   life: 7
   iniLife: 5
+  maxLife: 0
   jumpForce: 12
   tripleCannon: 1
   bounce: 1
   bulletBounces: 1
   cannonsNumber: 1
+  bulletsScale: 0
   feetPos: {fileID: 1516682608}
   checkRadius: 0.3
   jumpTime: 0.2

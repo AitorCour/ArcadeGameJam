@@ -80,6 +80,7 @@ public class HUD : MonoBehaviour
     }
     public void SetLife(int life)
     {
+
         ResetLife();
         bool isEven = life % 2 == 0;
         if (isEven)

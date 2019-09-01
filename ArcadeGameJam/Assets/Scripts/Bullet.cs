@@ -30,7 +30,7 @@ public class Bullet : MonoBehaviour
         }        
 	}
 
-    public virtual void ShotBullet(Vector2 origin, Vector2 direction, int bounceNumber, int scale)
+    public virtual void ShotBullet(Vector2 origin, Vector2 direction, int bounceNumber, float scale)
     {
         shot = true;
         transform.position = origin;
@@ -45,7 +45,7 @@ public class Bullet : MonoBehaviour
         collided = bounceNumber;
     }
 
-    public virtual void ShotBullet(Vector2 origin, float zRot, int bounceNumber, int scale)
+    public virtual void ShotBullet(Vector2 origin, float zRot, int bounceNumber, float scale)
     {
         ShotBullet(origin, Vector2.right, bounceNumber, scale);
         transform.rotation = Quaternion.Euler(0, 0, zRot);
