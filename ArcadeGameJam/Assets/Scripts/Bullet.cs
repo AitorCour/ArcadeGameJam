@@ -13,13 +13,16 @@ public class Bullet : MonoBehaviour
     protected Vector2 dir;
     private float rot;
     public AudioSource shotFX;
+    private Animator anim;
     public int collided = 2;
     public bool bounceBullets;
 	// Use this for initialization
 	protected virtual void Start ()
     {
         iniPos = transform.position;
-	}
+        anim = GetComponentInChildren<Animator>();
+        anim.enabled = false;
+    }
 	
 	// Update is called once per frame
 	protected virtual void Update ()
@@ -43,6 +46,7 @@ public class Bullet : MonoBehaviour
             shotFX.Play();
         }
         collided = bounceNumber;
+        anim.enabled = true;
     }
 
     public virtual void ShotBullet(Vector2 origin, float zRot, int bounceNumber, float scale)
@@ -51,6 +55,7 @@ public class Bullet : MonoBehaviour
         transform.rotation = Quaternion.Euler(0, 0, zRot);
         rot = zRot;
         transform.localScale = new Vector2(scale, scale);
+        anim.enabled = true;
     }
 
     public virtual void Reset()
@@ -59,6 +64,7 @@ public class Bullet : MonoBehaviour
         shot = false;
         transform.rotation = Quaternion.Euler(0, 0, 0);
         speed = iniSpeed;
+        anim.enabled = false;
     }
 
     protected void OnTriggerExit2D(Collider2D collision)
