@@ -10,8 +10,12 @@ public class ShootEnemy : EnemyBehaviour
     public float shootDistance;
     //public bool playerDetected;
     public LayerMask ground;
+    public LayerMask playerLayer;
+
     private Ecanon canon;
     public float lookSpeed = 50;
+
+    private float angleP;
     // Start is called before the first frame update
     protected override void Start()
     {
@@ -34,6 +38,10 @@ public class ShootEnemy : EnemyBehaviour
         }
         else Gizmos.color = Color.red;
         Gizmos.DrawLine(transform.position, playerBe.transform.position);
+
+        Gizmos.color = Color.yellow;
+        Vector3 fov = Quaternion.AngleAxis(angleP, playerBe.transform.forward) * transform.right * 3;
+        Gizmos.DrawRay(transform.position, fov);
     }
     // Update is called once per frame
     protected override void Update()
@@ -66,7 +74,6 @@ public class ShootEnemy : EnemyBehaviour
             if (shootCounter >= shootTime)
             {
                 Debug.Log("Shoot");
-                Debug.Log(canon.negative);
                 canon.ShotRotateBullets();
                 shootCounter = 0;
             }
@@ -84,19 +91,44 @@ public class ShootEnemy : EnemyBehaviour
 
         Vector3 vectorToTarget = playerBe.transform.position - transform.position;
         float angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg;
+        angleP = angle;
         Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
         canon.transform.rotation = Quaternion.Slerp(canon.transform.rotation, q, Time.deltaTime * lookSpeed);
         float distance = Vector2.Distance(this.transform.position, playerBe.transform.position);
-        //Esto dispara a la derecha
 
-        Debug.Log(angle);
-        if (angle < 90 && angle > -90 && !canon.negative && distance < shootDistance)
+
+        Vector3 fov = Quaternion.AngleAxis(angle, transform.forward) * transform.right;
+        RaycastHit2D hitP = Physics2D.Raycast(transform.position, fov, distance);
+
+
+        //Esto dispara a la derecha
+        if (angle < 90 && angle > -90 && canon.negative && distance < shootDistance)
         {
-            playerDetected = true;
+            if(hitP.collider != null)
+            {
+                if (hitP.collider.CompareTag("Player"))
+                {
+                    playerDetected = true;
+                    Debug.Log("Right");
+                }
+                Debug.Log("No null");
+            }
+            /*playerDetected = true;
+            Debug.Log("Right");*/
         }
-        if(angle > 90 && angle < 270 && canon.negative && distance < shootDistance)
+        else if(angle > 90 && angle < 270 && !canon.negative && distance < shootDistance)
         {
-            playerDetected = true;
+            if (hitP.collider != null)
+            {
+                if (hitP.collider.CompareTag("Player"))
+                {
+                    playerDetected = true;
+                    Debug.Log("Left");
+                }
+                Debug.Log("No null");
+            }
+            //playerDetected = true;
+            //Debug.Log("Left");
         }
         /*if (angle > 90 && angle < -90 && canon.negative)
         {
@@ -111,20 +143,14 @@ public class ShootEnemy : EnemyBehaviour
     protected override void ChangeRotation()
     {
         base.ChangeRotation();
-        if (waypointIndex == 0)
+        if (currentSpeed.x == 1)
         {
-            /*Quaternion target = Quaternion.Euler(0, 0, 0);
-
-            // Dampen towards the target rotation
-            transform.rotation = Quaternion.Slerp(transform.rotation, target, 1f);*/
+            //Right
             canon.negative = true;
         }
-        else if (waypointIndex == 1)
+        else if (currentSpeed.x == -1)
         {
-            /*Quaternion target = Quaternion.Euler(0, 180, 0);
-
-            // Dampen towards the target rotation
-            transform.rotation = Quaternion.Slerp(transform.rotation, target, 1f);*/
+            //Left
             canon.negative = false;
         }
     }

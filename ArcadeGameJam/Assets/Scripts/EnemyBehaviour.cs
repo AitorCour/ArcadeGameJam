@@ -19,11 +19,13 @@ public class EnemyBehaviour : MonoBehaviour
     public Transform[] waypoints;
     public int waypointIndex = 0;
     protected float speed;
-    private Vector2 currentSpeed;
+    protected Vector2 currentSpeed;
+    private SpriteRenderer sprite;
     // Start is called before the first frame update
     protected virtual void Start()
     {
         playerBe = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehaviour>();
+        sprite = GetComponentInChildren<SpriteRenderer>();
         anim = GetComponentInChildren<Animator>();
         canMove = true;
         currentSpeed.x = 1;
@@ -147,13 +149,17 @@ public class EnemyBehaviour : MonoBehaviour
         currentSpeed.x *= -1;
         if(currentSpeed.x == 1)
         {
-            Quaternion target = Quaternion.Euler(0, 180, 0);
-            transform.rotation = Quaternion.Slerp(transform.rotation, target, 1f);
+            //Right
+            //Quaternion target = Quaternion.Euler(0, 180, 0);
+            //transform.rotation = Quaternion.Slerp(transform.rotation, target, 1f);
+            sprite.flipX = true;
         }
         else if (currentSpeed.x == -1)
         {
-            Quaternion target = Quaternion.Euler(0, 0, 0);
-            transform.rotation = Quaternion.Slerp(transform.rotation, target, 1f);
+            //Left
+            //Quaternion target = Quaternion.Euler(0, 0, 0);
+            //sprite.transform.rotation = Quaternion.Slerp(transform.rotation, target, 1f);
+            sprite.flipX = false;
         }
     }
 }
