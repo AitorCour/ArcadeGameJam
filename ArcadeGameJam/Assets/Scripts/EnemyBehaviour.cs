@@ -19,12 +19,14 @@ public class EnemyBehaviour : MonoBehaviour
     public Transform[] waypoints;
     public int waypointIndex = 0;
     protected float speed;
+    private Vector2 currentSpeed;
     // Start is called before the first frame update
     protected virtual void Start()
     {
         playerBe = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehaviour>();
         anim = GetComponentInChildren<Animator>();
         canMove = true;
+        currentSpeed.x = 1;
     }
 
     // Update is called once per frame
@@ -34,7 +36,7 @@ public class EnemyBehaviour : MonoBehaviour
         //Move();
         if(isRunning == true)
         {
-            speed *= 5;
+            currentSpeed.x *= 5;
             Move();
             if (runDeathCounter >= 2)
             {
@@ -46,9 +48,10 @@ public class EnemyBehaviour : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Player" && canDoDamage)
+        if (collision.tag == "Player")
         {
             playerBe.Damage(1);
+            Debug.Log("Collided");
         }
     }
     public void Damage(int damage)
@@ -64,6 +67,7 @@ public class EnemyBehaviour : MonoBehaviour
     protected virtual void NoLife()
     {
         Death();
+        Debug.Log("DeathComplete");
     }
     public void Death()
     {
@@ -79,6 +83,10 @@ public class EnemyBehaviour : MonoBehaviour
         anim.SetTrigger("Death");
     }
     protected virtual void Move()
+    {
+        transform.Translate(currentSpeed * Time.deltaTime, Space.World);
+    }
+    /*protected virtual void Move()
     {
         // If Enemy didn't reach last waypoint it can move
         // If enemy reached last waypoint then it stops
@@ -116,10 +124,10 @@ public class EnemyBehaviour : MonoBehaviour
             waypointIndex = 0;
             ChangeRotation();
         }
-    }
+    }*/
     protected virtual void ChangeRotation()
     {
-        if (waypointIndex == 0)
+        /*if (waypointIndex == 0)
         {
             Quaternion target = Quaternion.Euler(0, 0, 0);
 
@@ -134,6 +142,18 @@ public class EnemyBehaviour : MonoBehaviour
             // Dampen towards the target rotation
             transform.rotation = Quaternion.Slerp(transform.rotation, target, 1f);
             //canon.negative = false;
+        }*/
+
+        currentSpeed.x *= -1;
+        if(currentSpeed.x == 1)
+        {
+            Quaternion target = Quaternion.Euler(0, 180, 0);
+            transform.rotation = Quaternion.Slerp(transform.rotation, target, 1f);
+        }
+        else if (currentSpeed.x == -1)
+        {
+            Quaternion target = Quaternion.Euler(0, 0, 0);
+            transform.rotation = Quaternion.Slerp(transform.rotation, target, 1f);
         }
     }
 }

@@ -9,7 +9,7 @@ public class ShootEnemy : EnemyBehaviour
     //public float distance;
     public float shootDistance;
     //public bool playerDetected;
-    public LayerMask player;
+    public LayerMask ground;
     private Ecanon canon;
     public float lookSpeed = 50;
     // Start is called before the first frame update
@@ -22,12 +22,19 @@ public class ShootEnemy : EnemyBehaviour
         enemyLife = 8;
         ChangeRotation();
     }
-    /*private void OnDrawGizmosSelected()
+    private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Vector2 direction = transform.TransformDirection(Vector2.left) * distance;
+        Vector2 direction = transform.TransformDirection(Vector2.left) * 1;
         Gizmos.DrawRay(transform.position, direction);
-    }*/
+        Gizmos.DrawWireSphere(transform.position, shootDistance);
+        if (playerDetected)
+        {
+            Gizmos.color = Color.green;
+        }
+        else Gizmos.color = Color.red;
+        Gizmos.DrawLine(transform.position, playerBe.transform.position);
+    }
     // Update is called once per frame
     protected override void Update()
     {
@@ -46,13 +53,20 @@ public class ShootEnemy : EnemyBehaviour
             }
         }
         else playerDetected = false;*/
+        Vector2 direction = transform.TransformDirection(Vector2.left) * 1;
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, 1, ground);
+        if (hit.collider != null)
+        {
+            ChangeRotation();
+            Debug.Log("ChangeRot");
+        }
         if (playerDetected)
         {
             anim.SetBool("Shooting", true);
             if (shootCounter >= shootTime)
             {
                 Debug.Log("Shoot");
-                
+                Debug.Log(canon.negative);
                 canon.ShotRotateBullets();
                 shootCounter = 0;
             }
@@ -66,7 +80,7 @@ public class ShootEnemy : EnemyBehaviour
         }
         speed = 1;
 
-        Debug.DrawLine(this.transform.position, playerBe.transform.position, Color.blue);
+        //Debug.DrawLine(this.transform.position, playerBe.transform.position, Color.blue);
 
         Vector3 vectorToTarget = playerBe.transform.position - transform.position;
         float angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg;
@@ -74,8 +88,13 @@ public class ShootEnemy : EnemyBehaviour
         canon.transform.rotation = Quaternion.Slerp(canon.transform.rotation, q, Time.deltaTime * lookSpeed);
         float distance = Vector2.Distance(this.transform.position, playerBe.transform.position);
         //Esto dispara a la derecha
-        if (angle < 90 && angle > -90 && !canon.negative && distance < shootDistance 
-            || angle > 90 && angle < 270 && canon.negative && distance < shootDistance)
+
+        Debug.Log(angle);
+        if (angle < 90 && angle > -90 && !canon.negative && distance < shootDistance)
+        {
+            playerDetected = true;
+        }
+        if(angle > 90 && angle < 270 && canon.negative && distance < shootDistance)
         {
             playerDetected = true;
         }
