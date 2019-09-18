@@ -169,7 +169,7 @@ public class MeleeEnemy : EnemyBehaviour
             attacking = false;
             runCounter = 0;
             //tired = false;
-            Move();
+            //Move();
         }
         if(!canDoDamage)
         {

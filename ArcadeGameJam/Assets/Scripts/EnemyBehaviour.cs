@@ -29,6 +29,8 @@ public class EnemyBehaviour : MonoBehaviour
         anim = GetComponentInChildren<Animator>();
         canMove = true;
         currentSpeed.x = 1;
+        Debug.Log(currentSpeed);
+        isRunning = false;
     }
 
     // Update is called once per frame
@@ -38,9 +40,13 @@ public class EnemyBehaviour : MonoBehaviour
         //Move();
         if(isRunning == true)
         {
-            currentSpeed.x *= 5;
+            
             Move();
             if (runDeathCounter >= 2)
+            {
+                currentSpeed.x = 0;
+            }
+            if (runDeathCounter >= 2.3f)
             {
                 isRunning = false;
                 Death();
@@ -68,19 +74,23 @@ public class EnemyBehaviour : MonoBehaviour
     }
     protected virtual void NoLife()
     {
-        Death();
         Debug.Log("DeathComplete");
     }
     public void Death()
     {
         isDead = true;
         //anim.SetTrigger("Death");
+        Debug.Log("DEAD");
+        transform.position = new Vector2(-50, -50);
         this.enabled = false;
-        transform.position = new Vector2(-20, -20);
+        anim.enabled = false;
     }
     protected virtual void RunDeath()
     {
         isRunning = true;
+        currentSpeed.x = 5;
+        Debug.Log(currentSpeed);
+
         runDeathCounter = 0;
         anim.SetTrigger("Death");
     }
@@ -147,14 +157,14 @@ public class EnemyBehaviour : MonoBehaviour
         }*/
 
         currentSpeed.x *= -1;
-        if(currentSpeed.x == 1)
+        if(currentSpeed.x >= 1)
         {
             //Right
             //Quaternion target = Quaternion.Euler(0, 180, 0);
             //transform.rotation = Quaternion.Slerp(transform.rotation, target, 1f);
             sprite.flipX = true;
         }
-        else if (currentSpeed.x == -1)
+        else if (currentSpeed.x <= -1)
         {
             //Left
             //Quaternion target = Quaternion.Euler(0, 0, 0);

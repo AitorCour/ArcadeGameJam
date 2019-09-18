@@ -196,7 +196,7 @@ GameObject:
   m_Component:
   - component: {fileID: 160029668}
   - component: {fileID: 160029669}
-  m_Layer: 10
+  m_Layer: 2
   m_Name: EnemyCannon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -961,7 +961,7 @@ GameObject:
   m_Component:
   - component: {fileID: 327144219}
   - component: {fileID: 327144218}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Grid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1514,7 +1514,7 @@ GameObject:
   - component: {fileID: 468466867}
   - component: {fileID: 468466871}
   - component: {fileID: 468466869}
-  m_Layer: 10
+  m_Layer: 2
   m_Name: EnemyShoot
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -1612,13 +1612,13 @@ MonoBehaviour:
   waypointIndex: 0
   shootCounter: 0
   shootTime: 1
-  shootDistance: 5
+  shootDistance: 6.47
   ground:
     serializedVersion: 2
     m_Bits: 256
   playerLayer:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 0
   lookSpeed: 50
 --- !u!1 &474856490
 GameObject:
@@ -7292,7 +7292,7 @@ GameObject:
   - component: {fileID: 972585146}
   - component: {fileID: 972585148}
   - component: {fileID: 972585147}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: cm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9087,7 +9087,7 @@ GameObject:
   - component: {fileID: 1780020599}
   - component: {fileID: 1780020601}
   - component: {fileID: 1780020600}
-  m_Layer: 10
+  m_Layer: 2
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}

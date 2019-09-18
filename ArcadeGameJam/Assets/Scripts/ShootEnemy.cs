@@ -28,10 +28,13 @@ public class ShootEnemy : EnemyBehaviour
     }
     private void OnDrawGizmosSelected()
     {
-        Gizmos.color = Color.red;
-        Vector2 direction = transform.TransformDirection(Vector2.left) * 1;
-        Gizmos.DrawRay(transform.position, direction);
+        Gizmos.color = Color.white;
         Gizmos.DrawWireSphere(transform.position, shootDistance);
+
+        Gizmos.color = Color.red;
+        Vector2 direction = transform.TransformDirection(Vector2.left) * 3;
+        Gizmos.DrawRay(transform.position - new Vector3(-1.5f, 0, 0), direction);
+        
         if (playerDetected)
         {
             Gizmos.color = Color.green;
@@ -62,7 +65,7 @@ public class ShootEnemy : EnemyBehaviour
         }
         else playerDetected = false;*/
         Vector2 direction = transform.TransformDirection(Vector2.left) * 1;
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, 1, ground);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position - new Vector3(-1.5f, 0, 0), direction, 3, ground);
         if (hit.collider != null)
         {
             ChangeRotation();
@@ -99,11 +102,31 @@ public class ShootEnemy : EnemyBehaviour
 
         Vector3 fov = Quaternion.AngleAxis(angle, transform.forward) * transform.right;
         RaycastHit2D hitP = Physics2D.Raycast(transform.position, fov, distance);
-
-
-        //Esto dispara a la derecha
-        if (angle < 90 && angle > -90 && canon.negative && distance < shootDistance)
+        
+        if (hitP.collider != null)
         {
+            if (hitP.collider.CompareTag("Player"))
+            {
+                if (angle < 90 && angle > -90 && canon.negative && distance < shootDistance)
+                {
+                    playerDetected = true;
+                    Debug.Log("Right");
+                }
+                else if (angle > 90 && angle < 270 && !canon.negative && distance < shootDistance)
+                {
+                    playerDetected = true;
+                    Debug.Log("Left");
+                }
+                else playerDetected = false;
+                Debug.Log("playerDetected");
+            }
+            Debug.Log("No null" + hitP.collider.gameObject.name);
+        }
+        else playerDetected = false;
+        //Esto dispara a la derecha
+        /*if (angle < 90 && angle > -90 && canon.negative && distance < shootDistance)
+        {
+            Debug.Log("10");
             if(hitP.collider != null)
             {
                 if (hitP.collider.CompareTag("Player"))
@@ -115,7 +138,7 @@ public class ShootEnemy : EnemyBehaviour
             }
             /*playerDetected = true;
             Debug.Log("Right");*/
-        }
+        /*}
         else if(angle > 90 && angle < 270 && !canon.negative && distance < shootDistance)
         {
             if (hitP.collider != null)
@@ -134,7 +157,7 @@ public class ShootEnemy : EnemyBehaviour
         {
             playerDetected = true;
         }*/
-        else playerDetected = false;
+        //else playerDetected = false;
     }
     protected override void NoLife()
     {
