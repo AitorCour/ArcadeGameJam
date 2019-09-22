@@ -98,77 +98,16 @@ public class EnemyBehaviour : MonoBehaviour
     {
         transform.Translate(currentSpeed * Time.deltaTime, Space.World);
     }
-    /*protected virtual void Move()
-    {
-        // If Enemy didn't reach last waypoint it can move
-        // If enemy reached last waypoint then it stops
-        if (waypointIndex <= waypoints.Length - 1)
-        {
-            // Move Enemy from current waypoint to the next one
-            // using MoveTowards method
-            transform.position = Vector2.MoveTowards(transform.position,
-               waypoints[waypointIndex].transform.position,
-               speed * Time.deltaTime);
-
-            // If Enemy reaches position of waypoint he walked towards
-            // then waypointIndex is increased by 1
-            // and Enemy starts to walk to the next waypoint
-            if (transform.position == waypoints[waypointIndex].transform.position)
-            {
-                waypointIndex += 1;
-                ChangeRotation();
-            }
-
-            if (transform.position.x < waypoints[0].transform.position.x)
-            {
-                Quaternion target = Quaternion.Euler(0, 180, 0);
-                transform.rotation = Quaternion.Slerp(transform.rotation, target, 1f);
-            }
-            if (transform.position.x > waypoints[1].transform.position.x)
-            {
-                Quaternion target = Quaternion.Euler(0, 0, 0);
-                transform.rotation = Quaternion.Slerp(transform.rotation, target, 1f);
-            }
-        }
-        //Repeat
-        else if (waypointIndex >= waypoints.Length)
-        {
-            waypointIndex = 0;
-            ChangeRotation();
-        }
-    }*/
     protected virtual void ChangeRotation()
     {
-        /*if (waypointIndex == 0)
-        {
-            Quaternion target = Quaternion.Euler(0, 0, 0);
-
-            // Dampen towards the target rotation
-            transform.rotation = Quaternion.Slerp(transform.rotation, target, 1f);
-            //canon.negative = true;
-        }
-        else if (waypointIndex == 1)
-        {
-            Quaternion target = Quaternion.Euler(0, 180, 0);
-
-            // Dampen towards the target rotation
-            transform.rotation = Quaternion.Slerp(transform.rotation, target, 1f);
-            //canon.negative = false;
-        }*/
 
         currentSpeed.x *= -1;
         if(currentSpeed.x >= 1)
         {
-            //Right
-            //Quaternion target = Quaternion.Euler(0, 180, 0);
-            //transform.rotation = Quaternion.Slerp(transform.rotation, target, 1f);
             sprite.flipX = true;
         }
         else if (currentSpeed.x <= -1)
         {
-            //Left
-            //Quaternion target = Quaternion.Euler(0, 0, 0);
-            //sprite.transform.rotation = Quaternion.Slerp(transform.rotation, target, 1f);
             sprite.flipX = false;
         }
     }

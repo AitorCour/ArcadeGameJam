@@ -15,6 +15,7 @@ TagManager:
   - heart
   - midHeart
   - containerHeart
+  - ground
   layers:
   - Default
   - TransparentFX

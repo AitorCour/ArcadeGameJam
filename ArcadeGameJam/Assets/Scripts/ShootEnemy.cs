@@ -10,7 +10,6 @@ public class ShootEnemy : EnemyBehaviour
     public float shootDistance;
     //public bool playerDetected;
     public LayerMask ground;
-    public LayerMask playerLayer;
 
     private Ecanon canon;
     public float lookSpeed = 50;
@@ -50,33 +49,17 @@ public class ShootEnemy : EnemyBehaviour
     protected override void Update()
     {
         base.Update();
-
-        /*Vector2 direction = transform.TransformDirection(Vector2.left);
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, distance, player);
-        if (hit.collider != null)
-        {
-            //Debug.Log(hit.collider.gameObject.name);
-            if (hit.collider.CompareTag("Player"))
-            {
-                playerDetected = true;
-                playerSeen = true;
-                //Debug.Log("PlayerDetected");
-            }
-        }
-        else playerDetected = false;*/
         Vector2 direction = transform.TransformDirection(Vector2.left) * 1;
         RaycastHit2D hit = Physics2D.Raycast(transform.position - new Vector3(-1.5f, 0, 0), direction, 3, ground);
         if (hit.collider != null)
         {
             ChangeRotation();
-            Debug.Log("ChangeRot");
         }
         if (playerDetected)
         {
             anim.SetBool("Shooting", true);
             if (shootCounter >= shootTime)
             {
-                Debug.Log("Shoot");
                 canon.ShotRotateBullets();
                 shootCounter = 0;
             }
@@ -107,57 +90,26 @@ public class ShootEnemy : EnemyBehaviour
         {
             if (hitP.collider.CompareTag("Player"))
             {
-                if (angle < 90 && angle > -90 && canon.negative && distance < shootDistance)
+                if (angle < 50 && angle > -50 && canon.negative && distance < shootDistance)
                 {
                     playerDetected = true;
-                    Debug.Log("Right");
                 }
-                else if (angle > 90 && angle < 270 && !canon.negative && distance < shootDistance)
+                else if (angle > 130 && angle < 230 && !canon.negative && distance < shootDistance)
                 {
                     playerDetected = true;
-                    Debug.Log("Left");
                 }
                 else playerDetected = false;
-                Debug.Log("playerDetected");
             }
-            Debug.Log("No null" + hitP.collider.gameObject.name);
+        }
+        else if (hitP.collider.CompareTag("ground"))
+        {
+            playerDetected = false;
+        }
+        else if(distance > shootDistance)
+        {
+            playerDetected = false;
         }
         else playerDetected = false;
-        //Esto dispara a la derecha
-        /*if (angle < 90 && angle > -90 && canon.negative && distance < shootDistance)
-        {
-            Debug.Log("10");
-            if(hitP.collider != null)
-            {
-                if (hitP.collider.CompareTag("Player"))
-                {
-                    playerDetected = true;
-                    Debug.Log("Right");
-                }
-                Debug.Log("No null");
-            }
-            /*playerDetected = true;
-            Debug.Log("Right");*/
-        /*}
-        else if(angle > 90 && angle < 270 && !canon.negative && distance < shootDistance)
-        {
-            if (hitP.collider != null)
-            {
-                if (hitP.collider.CompareTag("Player"))
-                {
-                    playerDetected = true;
-                    Debug.Log("Left");
-                }
-                Debug.Log("No null");
-            }
-            //playerDetected = true;
-            //Debug.Log("Left");
-        }
-        /*if (angle > 90 && angle < -90 && canon.negative)
-        {
-            playerDetected = true;
-        }*/
-        //else playerDetected = false;
     }
     protected override void NoLife()
     {

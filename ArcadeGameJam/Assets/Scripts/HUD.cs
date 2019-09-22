@@ -75,7 +75,7 @@ public class HUD : MonoBehaviour
         for(int i = 0; i < nHearts; i++)
         {
             //xPos = containerHearts[i].anchoredPosition;
-            containerHearts[i].GetComponent<RectTransform>().anchoredPosition = new Vector2((i * 150) + 100, -100);
+            containerHearts[i].GetComponent<RectTransform>().anchoredPosition = new Vector2((i * 150) + 100, -93);
         }
     }
     public void SetLife(int life)
@@ -104,7 +104,7 @@ public class HUD : MonoBehaviour
             {
                 b -= 1;
             }
-            midHeart.GetComponent<RectTransform>().anchoredPosition = new Vector2((b * 150) + 100, -100);
+            midHeart.GetComponent<RectTransform>().anchoredPosition = new Vector2((b * 150) + 100, -93);
         }
     }
     private void ResetLife()

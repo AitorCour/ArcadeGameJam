@@ -47,6 +47,8 @@ public class PlayerBehaviour : MonoBehaviour
     public float damageTime;
 
     public float distance;
+    public float distance2;
+    public float heightLow;
     private bool canEat;
     public bool eating;
     public float eatCounter;
@@ -140,6 +142,13 @@ public class PlayerBehaviour : MonoBehaviour
         }
         Vector2 direction = transform.TransformDirection(Vector2.left);
         RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, distance, enemy);
+
+        Vector2 direction2 = transform.TransformDirection(Vector2.right);
+        RaycastHit2D hit1 = Physics2D.Raycast(transform.position, direction2, distance2, ground);
+        RaycastHit2D hit2 = Physics2D.Raycast(transform.position + new Vector3(0, heightLow, 0), direction2, distance2, ground);
+        RaycastHit2D hit3 = Physics2D.Raycast(transform.position - new Vector3(0, heightLow, 0), direction2, distance2, ground);
+
+
         if (hit.collider != null)
         {
             if (hit.collider.CompareTag("Enemy"))
@@ -171,12 +180,23 @@ public class PlayerBehaviour : MonoBehaviour
             canEat = false;
             return;
         }
+
+        if(hit1.collider != null /*|| hit2.collider != null || hit3.collider != null*/)
+        {
+            Debug.Log("cannot move");
+        }
     }
     // Update is called once per frame
     private void OnDrawGizmosSelected()
     {
         Vector2 direction = transform.TransformDirection(Vector2.left) * distance;
         Gizmos.DrawRay(transform.position, direction);
+
+        Gizmos.color = Color.red;
+        Vector2 direction2 = transform.TransformDirection(Vector2.right) * distance2;
+        Gizmos.DrawRay(transform.position, direction2);
+        Gizmos.DrawRay(transform.position + new Vector3(0, heightLow,0) , direction2);
+        Gizmos.DrawRay(transform.position - new Vector3(0, heightLow, 0), direction2);
     }
     public void SetAxis(Vector2 inputAxis)
     {
