@@ -16,8 +16,6 @@ public class EnemyBehaviour : MonoBehaviour
     private float runDeathCounter;
     protected int enemyLife;
 
-    public Transform[] waypoints;
-    public int waypointIndex = 0;
     protected float speed;
     protected Vector2 currentSpeed;
     private SpriteRenderer sprite;

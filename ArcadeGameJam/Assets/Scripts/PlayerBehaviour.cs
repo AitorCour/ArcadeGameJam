@@ -23,7 +23,8 @@ public class PlayerBehaviour : MonoBehaviour
     private bool canMove;
     public bool dead;
     //Save
-    public float speed;
+    private float speed;
+    public float defSpeed;
     public int life;
     public int iniLife;
     public int maxLife;
@@ -34,13 +35,13 @@ public class PlayerBehaviour : MonoBehaviour
     public int cannonsNumber;
     public float bulletsScale;
 
-    public Transform feetPos;
-    public float checkRadius;
     private float jumpCounter;
     public float jumpTime;
     public LayerMask ground;
     public LayerMask enemy;
     private bool movingForward = true;
+    private bool canMoveForward;
+    private bool canMoveBackwards;
 
     private bool canRecieveDamage = true;
     private float timeCounterDamage;
@@ -48,7 +49,9 @@ public class PlayerBehaviour : MonoBehaviour
 
     public float distance;
     public float distance2;
+    public float distance3;
     public float heightLow;
+    public float widthLow;
     private bool canEat;
     public bool eating;
     public float eatCounter;
@@ -72,11 +75,17 @@ public class PlayerBehaviour : MonoBehaviour
         canEat = false;
         targetEnemy = null;
         life = iniLife;
+        speed = defSpeed;
         //SetLife();
     }
     void FixedUpdate()
     {
-        isGrounded = Physics2D.OverlapCircle(feetPos.position, checkRadius, ground);
+        //isGrounded = Physics2D.OverlapCircle(feetPos.position, checkRadius, ground);
+
+        Vector2 direction2 = transform.TransformDirection(Vector2.down);
+        RaycastHit2D hit1 = Physics2D.Raycast(transform.position, direction2, distance2, ground);
+        RaycastHit2D hit2 = Physics2D.Raycast(transform.position + new Vector3(widthLow, 0, 0), direction2, distance3, ground);
+        RaycastHit2D hit3 = Physics2D.Raycast(transform.position - new Vector3(widthLow, 0, 0), direction2, distance3, ground);
         if (isJumping)
         {
             //rb.velocity = Vector2.up * jumpForce;
@@ -92,7 +101,19 @@ public class PlayerBehaviour : MonoBehaviour
                 animArm.SetTrigger("MidJump");
             }
         }
-        if(isGrounded)
+        if (hit1.collider != null || hit2.collider != null || hit3.collider != null)
+        {
+            isGrounded = true;
+            anim.SetBool("Jumping", false);
+            animArm.SetBool("Jumping", false);
+        }
+        else if (hit1.collider == null && hit2.collider == null && hit3.collider == null)
+        {
+            isGrounded = false;
+            anim.SetBool("Jumping", true);
+            animArm.SetBool("Jumping", true);
+        }
+        /*if (isGrounded)
         {
             anim.SetBool("Jumping", false);
             animArm.SetBool("Jumping", false);
@@ -101,7 +122,7 @@ public class PlayerBehaviour : MonoBehaviour
         {
             anim.SetBool("Jumping", true);
             animArm.SetBool("Jumping", true);
-        }
+        }*/
     }
     void Update()
     {
@@ -147,8 +168,23 @@ public class PlayerBehaviour : MonoBehaviour
         RaycastHit2D hit1 = Physics2D.Raycast(transform.position, direction2, distance2, ground);
         RaycastHit2D hit2 = Physics2D.Raycast(transform.position + new Vector3(0, heightLow, 0), direction2, distance2, ground);
         RaycastHit2D hit3 = Physics2D.Raycast(transform.position - new Vector3(0, heightLow, 0), direction2, distance2, ground);
-
-
+        if (hit1.collider != null || hit2.collider != null || hit3.collider != null)
+        {
+            if(movingForward)
+            {
+                canMoveForward = false;
+            }
+            else if(!movingForward)
+            {
+                canMoveBackwards = false;
+            }
+            Debug.Log("cannot move");
+        }
+        else if (hit1.collider == null && hit2.collider == null && hit3.collider == null)
+        {
+            canMoveForward = true;
+            canMoveBackwards = true;
+        }
         if (hit.collider != null)
         {
             if (hit.collider.CompareTag("Enemy"))
@@ -181,10 +217,7 @@ public class PlayerBehaviour : MonoBehaviour
             return;
         }
 
-        if(hit1.collider != null /*|| hit2.collider != null || hit3.collider != null*/)
-        {
-            Debug.Log("cannot move");
-        }
+        
     }
     // Update is called once per frame
     private void OnDrawGizmosSelected()
@@ -197,6 +230,10 @@ public class PlayerBehaviour : MonoBehaviour
         Gizmos.DrawRay(transform.position, direction2);
         Gizmos.DrawRay(transform.position + new Vector3(0, heightLow,0) , direction2);
         Gizmos.DrawRay(transform.position - new Vector3(0, heightLow, 0), direction2);
+        Vector2 direction3 = transform.TransformDirection(Vector2.down) * distance3;
+        Gizmos.DrawRay(transform.position, direction3);
+        Gizmos.DrawRay(transform.position + new Vector3(widthLow, 0, 0), direction3);
+        Gizmos.DrawRay(transform.position - new Vector3(widthLow, 0, 0), direction3);
     }
     public void SetAxis(Vector2 inputAxis)
     {
@@ -208,24 +245,27 @@ public class PlayerBehaviour : MonoBehaviour
         //currentVelocity.x = speed * 1;
         if (!canMove) return;
 
-        if (axis.x >= 0.1)
+        if (axis.x >= 0.1 && canMoveBackwards)
         {
             anim.SetBool("Walking", true);
             animArm.SetBool("WalkingHead", true);
             movingForward = false;
+            speed = defSpeed;
             ChangeRotation();
         }
-        else if (axis.x <= -0.1)
+        else if (axis.x <= -0.1 && canMoveForward)
         {
             anim.SetBool("Walking", true);
             animArm.SetBool("WalkingHead", true);
             movingForward = true;
+            speed = defSpeed;
             ChangeRotation();
         }
         else
         {
             anim.SetBool("Walking", false);
             animArm.SetBool("WalkingHead", false);
+            speed = 0;
         }
     }
     public void StartJump()

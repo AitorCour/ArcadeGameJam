@@ -31,13 +31,23 @@ public class MeleeEnemy : EnemyBehaviour
     }
     private void OnDrawGizmosSelected()
     {
-        Vector2 direction = transform.TransformDirection(Vector2.left) * distance;
-        Vector3 fovLine2 = Quaternion.AngleAxis(-angle, transform.forward) * -transform.right * radius;
-        Vector3 fovLine1 = Quaternion.AngleAxis(-angle / 2, transform.forward) * -transform.right * radius;
-        //Gizmos.DrawRay(transform.position, fovLine1);
-        Gizmos.DrawRay(transform.position, fovLine2);
-        Gizmos.DrawRay(transform.position, fovLine1);
-        Gizmos.DrawRay(transform.position, direction);
+        Gizmos.color = Color.white;
+        Gizmos.DrawWireSphere(transform.position, shootDistance);
+
+        Gizmos.color = Color.red;
+        Vector2 direction = transform.TransformDirection(Vector2.left) * 3;
+        Gizmos.DrawRay(transform.position - new Vector3(-1.5f, 0, 0), direction);
+
+        if (playerDetected)
+        {
+            Gizmos.color = Color.green;
+        }
+        else Gizmos.color = Color.red;
+        Gizmos.DrawLine(transform.position, playerBe.transform.position);
+
+        Gizmos.color = Color.yellow;
+        Vector3 fov = Quaternion.AngleAxis(angleP, playerBe.transform.forward) * transform.right * 3;
+        Gizmos.DrawRay(transform.position, fov);
     }
     /*public static bool inFOV(Transform checkingObject, Transform target, float maxAngle, float maxRadius)
     {
