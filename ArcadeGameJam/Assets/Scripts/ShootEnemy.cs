@@ -15,6 +15,7 @@ public class ShootEnemy : EnemyBehaviour
     public float lookSpeed = 50;
 
     private float angleP;
+    private Vector2 directionF;
     // Start is called before the first frame update
     protected override void Start()
     {
@@ -31,8 +32,18 @@ public class ShootEnemy : EnemyBehaviour
         Gizmos.DrawWireSphere(transform.position, shootDistance);
 
         Gizmos.color = Color.red;
-        Vector2 direction = transform.TransformDirection(Vector2.left) * 3;
-        Gizmos.DrawRay(transform.position - new Vector3(-1.5f, 0, 0), direction);
+        if (!canon.negative)
+        {
+            //left
+            directionF = transform.TransformDirection(Vector2.left);
+        }
+        else if (canon.negative)
+        {
+            //right
+            directionF = transform.TransformDirection(Vector2.right);
+        }
+        Vector2 direction = directionF * 2;
+        Gizmos.DrawRay(transform.position - new Vector3(0, 0, 0), direction);
         
         if (playerDetected)
         {
@@ -49,8 +60,19 @@ public class ShootEnemy : EnemyBehaviour
     protected override void Update()
     {
         base.Update();
-        Vector2 direction = transform.TransformDirection(Vector2.left) * 1;
-        RaycastHit2D hit = Physics2D.Raycast(transform.position - new Vector3(-1.5f, 0, 0), direction, 3, ground);
+        //Cambio de dirección
+        if(!canon.negative)
+        {
+            //left
+            directionF = transform.TransformDirection(Vector2.left);
+        }
+        else if(canon.negative)
+        {
+            //right
+            directionF = transform.TransformDirection(Vector2.right);
+        }
+        Vector2 direction = directionF;
+        RaycastHit2D hit = Physics2D.Raycast(transform.position - new Vector3(0, 0, 0), direction, 2, ground);
         if (hit.collider != null)
         {
             ChangeRotation();
@@ -75,6 +97,7 @@ public class ShootEnemy : EnemyBehaviour
 
         //Debug.DrawLine(this.transform.position, playerBe.transform.position, Color.blue);
 
+        //Detecta jugador
         Vector3 vectorToTarget = playerBe.transform.position - transform.position;
         float angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg;
         angleP = angle;
